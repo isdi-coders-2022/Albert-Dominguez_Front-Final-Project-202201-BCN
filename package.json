@@ -46,7 +46,7 @@
     "husky": "^7.0.4"
   },
   "jest":{
-     "collectCoverageFrom": [
+    "collectCoverageFrom": [
       "src/**/*.{ts,tsx}",
       "!src/**/*.test.ts",
       "!src/index.ts"
