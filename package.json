@@ -1,5 +1,5 @@
 {
-  "name": "prova-typescript",
+  "name": "nicest-shrink-front",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -20,6 +20,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --passWithNoTests",
+    "test-coverage": "react-scripts test --coverage",
     "eject": "react-scripts eject",
     "prepare": "husky install"
   },
@@ -43,5 +44,13 @@
   },
   "devDependencies": {
     "husky": "^7.0.4"
+  },
+  "jest":{
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}",
+      "!src/**/*.test.ts",
+      "!src/index.ts"
+    ]    
   }
+  
 }
