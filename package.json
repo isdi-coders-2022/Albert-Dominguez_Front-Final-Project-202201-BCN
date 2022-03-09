@@ -49,7 +49,9 @@
     "collectCoverageFrom": [
       "src/**/*.{ts,tsx}",
       "!src/**/*.test.ts",
-      "!src/index.ts"
+      "!src/index.{ts, tsx}",
+      "!src/setupTests.ts",
+      "!src/react-app-env.d.ts"
     ]    
   }
   
