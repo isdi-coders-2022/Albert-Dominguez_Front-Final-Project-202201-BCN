@@ -7,14 +7,7 @@ describe("Given a Button component", () => {
     test("Then it should call the action", () => {
       const action = jest.fn();
 
-      render(
-        <Button
-          actionOnClick={action}
-          text="text"
-          type="usuari"
-          className="button"
-        />
-      );
+      render(<Button text="text" actionOnClick={action} />);
 
       userEvent.click(screen.getByRole("button"));
 
