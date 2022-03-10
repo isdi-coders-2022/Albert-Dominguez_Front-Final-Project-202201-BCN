@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from "./components/Footer/Footer";
 import Navigation from "./components/Navigation/Navigation";
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
     <div className="App">
       <Navigation />
       <h1>Let's get crazy</h1>
+      <Footer />
     </div>
   );
 }
