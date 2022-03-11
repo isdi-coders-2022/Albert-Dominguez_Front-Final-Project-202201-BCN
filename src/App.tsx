@@ -10,8 +10,10 @@ function App() {
     <div className="App">
       <Navigation />
       <Routes>
-        <Route path="/sessions" element={<SessionsPage />} />
-        <Route path="*" element={<NotFoundPage />} />
+        <Route>
+          <Route path="/sessions" element={<SessionsPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
       </Routes>
       <Footer />
     </div>
