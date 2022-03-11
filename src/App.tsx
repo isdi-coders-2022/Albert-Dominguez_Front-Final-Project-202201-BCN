@@ -1,12 +1,18 @@
 import React from "react";
+import { Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import Navigation from "./components/Navigation/Navigation";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import SessionsPage from "./pages/SessionsPage/SessionsPage";
 
 function App() {
   return (
     <div className="App">
       <Navigation />
-      <h1>Let's get crazy</h1>
+      <Routes>
+        <Route path="/sessions" element={<SessionsPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
       <Footer />
     </div>
   );

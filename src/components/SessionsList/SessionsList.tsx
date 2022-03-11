@@ -10,6 +10,8 @@ const ListContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 10px;
+  width: 90vw;
 `;
 
 const SessionsList = ({
@@ -19,7 +21,13 @@ const SessionsList = ({
   return (
     <ListContainer>
       {sessionsArray.map((session) => {
-        return <Session session={session} actionOnClick={actionOnClick} />;
+        return (
+          <Session
+            key={session.id}
+            session={session}
+            actionOnClick={actionOnClick}
+          />
+        );
       })}
     </ListContainer>
   );

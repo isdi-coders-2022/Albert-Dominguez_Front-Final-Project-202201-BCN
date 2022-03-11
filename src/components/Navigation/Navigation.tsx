@@ -32,19 +32,19 @@ const Navigation = (): JSX.Element => {
       <nav>
         <List>
           <li>
-            <Anchor href="Calendar">Calendar</Anchor>
+            <Anchor href="calendar">Calendar</Anchor>
           </li>
           <li>
-            <Anchor href="Sessions">Sessions</Anchor>
+            <Anchor href="sessions">Sessions</Anchor>
           </li>
           <li>
-            <Anchor href="Patients">Patients</Anchor>
+            <Anchor href="patients">Patients</Anchor>
           </li>
           <li>
-            <Anchor href="LogIn">Log In</Anchor>
+            <Anchor href="login">Log In</Anchor>
           </li>
           <li>
-            <Anchor href="LogOut">Log Out</Anchor>
+            <Anchor href="logout">Log Out</Anchor>
           </li>
         </List>
       </nav>

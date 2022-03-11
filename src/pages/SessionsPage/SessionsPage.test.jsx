@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
-import SessionsList from "./SessionsList";
+import SessionsPage from "./SessionsPage";
 
-describe("Given a SessionsList component", () => {
+describe("Given a SessionsPage component", () => {
   describe("When it's instantiated", () => {
     test("Then it should render a list of session cards", () => {
       const sessionList = [
@@ -31,7 +31,7 @@ describe("Given a SessionsList component", () => {
       const mockFunction = jest.fn();
 
       render(
-        <SessionsList
+        <SessionsPage
           sessionsArray={sessionList}
           actionOnClick={mockFunction}
         />

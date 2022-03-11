@@ -7,6 +7,7 @@ export interface UserShape {
 }
 
 export interface SessionShape {
+  id: string;
   when: string;
   where: string;
   patient: UserShape;
@@ -21,6 +22,8 @@ interface SessionProps {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   color: white;
   border-style: solid;
   border-radius: 20px;
