@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+
 import Session, { SessionShape } from "./Session";
 
 describe("Given a Session component", () => {
