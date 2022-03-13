@@ -7,7 +7,7 @@ export interface UserShape {
 }
 
 export interface SessionShape {
-  id: string;
+  _id: string;
   when: string;
   where: string;
   patient: UserShape;

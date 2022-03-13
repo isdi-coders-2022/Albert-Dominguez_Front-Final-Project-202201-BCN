@@ -11,31 +11,7 @@ const Main = styled.main`
   align-items: center;
   flex-direction: column;
 `;
-/* const sessionList = [
-  {
-    id: "1a",
-    when: "Tomorrow",
-    where: "Where eagles dare",
-    patient: { name: "Teodoro", lastname: "Maloso", username: "Tmaloso" },
-    doctor: {
-      name: "Doctor",
-      lastname: "Strange",
-      username: "DrStrange",
-    },
-  },
-  {
-    id: "1b",
-    when: "Today",
-    where: "Where eagles dare",
-    patient: { name: "Teodoro", lastname: "Maloso", username: "Tmaloso" },
-    doctor: {
-      name: "Doctor",
-      lastname: "Strange",
-      username: "DrStrange",
-    },
-  },
-];
- */
+
 const SessionsPage = () => {
   const dispatch = useDispatch();
   const sessionsList = useSelector((state: RootState) => state.sessions);

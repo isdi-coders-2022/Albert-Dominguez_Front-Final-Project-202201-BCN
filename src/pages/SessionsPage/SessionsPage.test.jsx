@@ -41,7 +41,7 @@ describe("Given a SessionsPage component", () => {
         </Provider>
       );
 
-      const paragraph = screen.getByText("Tomorrow");
+      const paragraph = screen.getByRole("heading", { name: "MY SESSIONS" });
 
       expect(paragraph).toBeInTheDocument();
     });
