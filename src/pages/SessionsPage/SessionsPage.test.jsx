@@ -1,4 +1,6 @@
 import { render, screen } from "@testing-library/react";
+import { Provider } from "react-redux";
+import { store } from "../../redux/store";
 import SessionsPage from "./SessionsPage";
 
 describe("Given a SessionsPage component", () => {
@@ -31,13 +33,15 @@ describe("Given a SessionsPage component", () => {
       const mockFunction = jest.fn();
 
       render(
-        <SessionsPage
-          sessionsArray={sessionList}
-          actionOnClick={mockFunction}
-        />
+        <Provider store={store}>
+          <SessionsPage
+            sessionsArray={sessionList}
+            actionOnClick={mockFunction}
+          />
+        </Provider>
       );
 
-      const paragraph = screen.getByText("Tomorrow");
+      const paragraph = screen.getByRole("heading", { name: "MY SESSIONS" });
 
       expect(paragraph).toBeInTheDocument();
     });

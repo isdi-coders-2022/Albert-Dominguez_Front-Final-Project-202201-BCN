@@ -5,7 +5,7 @@ describe("Given a load sessions action creator", () => {
     test("Then it should return an action with type load sessions and those sessions", () => {
       const sessions = [
         {
-          id: "1a",
+          _id: "1a",
           when: "Tomorrow",
           where: "Where eagles dare",
           patient: { name: "Teodoro", lastname: "Maloso", username: "Tmaloso" },
@@ -16,7 +16,7 @@ describe("Given a load sessions action creator", () => {
           },
         },
         {
-          id: "1b",
+          _id: "1b",
           when: "Today",
           where: "Where eagles dare",
           patient: { name: "Teodoro", lastname: "Maloso", username: "Tmaloso" },

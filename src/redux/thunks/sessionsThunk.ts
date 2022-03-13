@@ -6,7 +6,6 @@ export const loadSessionsListThunk = async (
   dispatch: ThunkDispatch<void, unknown, AnyAction>
 ) => {
   const response = await fetch(`${process.env.REACT_APP_API}sessions/`);
-
   const sessionsListResponse = await response.json();
   dispatch(loadSessionsAction(sessionsListResponse));
 };

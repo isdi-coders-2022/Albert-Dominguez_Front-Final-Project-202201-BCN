@@ -7,7 +7,7 @@ describe("Given a sessions reducer", () => {
       const sessions: SessionShape[] = [];
       const sessionsToLoad: SessionShape[] = [
         {
-          id: "1a",
+          _id: "1a",
           when: "Tomorrow",
           where: "Where eagles dare",
           patient: { name: "Teodoro", lastname: "Maloso", username: "Tmaloso" },
@@ -18,7 +18,7 @@ describe("Given a sessions reducer", () => {
           },
         },
         {
-          id: "1b",
+          _id: "1b",
           when: "Today",
           where: "Where eagles dare",
           patient: { name: "Teodoro", lastname: "Maloso", username: "Tmaloso" },
@@ -43,7 +43,7 @@ describe("Given a sessions reducer", () => {
       test("Then it should return a new state with the current state (initial state)", () => {
         const sessions: SessionShape[] = [
           {
-            id: "1a",
+            _id: "1a",
             when: "Tomorrow",
             where: "Where eagles dare",
             patient: {
@@ -58,7 +58,7 @@ describe("Given a sessions reducer", () => {
             },
           },
           {
-            id: "1b",
+            _id: "1b",
             when: "Today",
             where: "Where eagles dare",
             patient: {

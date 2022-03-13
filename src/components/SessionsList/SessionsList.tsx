@@ -23,7 +23,7 @@ const SessionsList = ({
       {sessionsArray.map((session) => {
         return (
           <Session
-            key={session.id}
+            key={session._id}
             session={session}
             actionOnClick={actionOnClick}
           />

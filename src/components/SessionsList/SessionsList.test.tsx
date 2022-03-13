@@ -6,7 +6,7 @@ describe("Given a SessionsList component", () => {
     test("Then it should render a list of session cards", () => {
       const sessionList = [
         {
-          id: "1a",
+          _id: "1a",
           when: "Tomorrow",
           where: "Where eagles dare",
           patient: { name: "Teodoro", lastname: "Maloso", username: "Tmaloso" },
@@ -17,7 +17,7 @@ describe("Given a SessionsList component", () => {
           },
         },
         {
-          id: "1b",
+          _id: "1b",
           when: "Today",
           where: "Where eagles dare",
           patient: { name: "Teodoro", lastname: "Maloso", username: "Tmaloso" },
