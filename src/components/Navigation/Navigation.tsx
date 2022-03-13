@@ -9,6 +9,7 @@ const Header = styled.header`
   align-items: center;
   width: 100vw;
   position: fixed;
+  box-shadow: 0px 0px 10px white;
 `;
 const Title = styled.h1`
   margin: 10px;
