@@ -10,6 +10,9 @@ const Main = styled.main`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  overflow: scroll;
+  padding-top: 18vh;
+  padding-bottom: 20vh;
 `;
 
 const SessionsPage = () => {

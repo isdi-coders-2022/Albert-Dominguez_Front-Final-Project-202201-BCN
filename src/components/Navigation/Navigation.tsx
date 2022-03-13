@@ -7,7 +7,8 @@ const Header = styled.header`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  position: sticky;
+  width: 100vw;
+  position: fixed;
 `;
 const Title = styled.h1`
   margin: 10px;

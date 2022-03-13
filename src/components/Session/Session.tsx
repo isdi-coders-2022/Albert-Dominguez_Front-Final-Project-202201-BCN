@@ -34,8 +34,9 @@ const Session = ({ session, actionOnClick }: SessionProps): JSX.Element => {
   return (
     <Container onClick={actionOnClick}>
       <p>{session.when}</p>
-      <p>{session.doctor.name}</p>
-      <p>{session.patient.name}</p>
+      <p>{`At: ${session.where}`}</p>
+      <p>{`Therapist: ${session.doctor.name}`}</p>
+      <p>{`Patient: ${session.patient.name}`}</p>
     </Container>
   );
 };
