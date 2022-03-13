@@ -1,6 +1,5 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import CalendarComponent from "./components/CalendarComponent/CalendarComponent";
 import Footer from "./components/Footer/Footer";
 import Navigation from "./components/Navigation/Navigation";
 import CalendarPage from "./pages/CalendarPage/CalendarPage";
