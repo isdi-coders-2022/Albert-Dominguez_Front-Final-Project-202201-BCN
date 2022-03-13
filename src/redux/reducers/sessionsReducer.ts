@@ -2,7 +2,7 @@ import { actionTypes } from "../actions/actionTypes";
 import { SessionShape } from "../../components/Session/Session";
 
 const sessionsReducer = (
-  sessions: SessionShape[],
+  sessions: SessionShape[] = [],
   action: { type: string; sessions: SessionShape[] }
 ) => {
   let newSessionsList;
