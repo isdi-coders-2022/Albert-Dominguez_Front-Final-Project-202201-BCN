@@ -1,16 +1,23 @@
 import { actionTypes } from "../actions/actionTypes";
 import { SessionShape } from "../../components/Session/Session";
+import { AnyAction } from "redux";
 
 const sessionsReducer = (
   sessions: SessionShape[] = [],
-  action: { type: string; sessions: SessionShape[] }
+  action: AnyAction = { type: "", sessions }
 ) => {
   let newSessionsList;
+  switch (action.type) {
+    case actionTypes.loadSessionsList:
+      newSessionsList = [...action.sessions];
+      break;
 
-  if (action.type === actionTypes.loadSessionsList) {
-    newSessionsList = [...action.sessions];
-  } else {
-    newSessionsList = [...sessions];
+    case actionTypes.loadOneSession:
+      newSessionsList = sessions.filter((session) => action.id !== session._id);
+      break;
+
+    default:
+      newSessionsList = [...sessions];
   }
 
   return newSessionsList;
