@@ -10,7 +10,6 @@ const Futer = styled.footer`
   color: white;
   height: 15vh;
   bottom: 0;
-  overflow: scroll;
   box-shadow: 0px 0px 10px white;
 `;
 const Image = styled.img`

@@ -9,10 +9,11 @@ import NotFoundPage from "../NotFoundPage/NotFoundPage";
 
 const Main = styled.main`
   display: flex;
+  width: 100vw;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  overflow: scroll;
+  overflow: auto;
   padding-top: 18vh;
   padding-bottom: 20vh;
 `;
