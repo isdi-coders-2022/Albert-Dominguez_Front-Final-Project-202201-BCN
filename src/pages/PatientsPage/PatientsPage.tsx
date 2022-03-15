@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import PatientsList from "../../components/PatientList/PatientList";
+import PatientsList from "../../components/PatienstList/PatientsList";
 import { RootState } from "../../redux/store";
 import { loadPatientssListThunk } from "../../redux/thunks/usersThunk";
 
