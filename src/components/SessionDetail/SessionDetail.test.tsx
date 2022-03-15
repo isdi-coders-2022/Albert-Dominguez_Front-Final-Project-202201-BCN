@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-
-import Session, { SessionShape } from "./Session";
+import { SessionShape } from "../Session/Session";
+import SessionDetail from "./SessionDetail";
 
 describe("Given a Session component", () => {
   describe("When it's instantiated", () => {
@@ -35,7 +35,7 @@ describe("Given a Session component", () => {
 
       render(
         <MemoryRouter>
-          <Session session={firstSession} actionOnClick={mockFunction} />
+          <SessionDetail session={firstSession} actionOnClick={mockFunction} />
         </MemoryRouter>
       );
 

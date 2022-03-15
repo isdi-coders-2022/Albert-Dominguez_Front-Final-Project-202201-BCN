@@ -34,19 +34,19 @@ const Navigation = (): JSX.Element => {
       <nav>
         <List>
           <li>
-            <Anchor href="calendar">Calendar</Anchor>
+            <Anchor href="/calendar">Calendar</Anchor>
           </li>
           <li>
-            <Anchor href="sessions">Sessions</Anchor>
+            <Anchor href="/sessions">Sessions</Anchor>
           </li>
           <li>
-            <Anchor href="patients">Patients</Anchor>
+            <Anchor href="/patients">Patients</Anchor>
           </li>
           <li>
-            <Anchor href="login">Log In</Anchor>
+            <Anchor href="/login">Log In</Anchor>
           </li>
           <li>
-            <Anchor href="logout">Log Out</Anchor>
+            <Anchor href="/logout">Log Out</Anchor>
           </li>
         </List>
       </nav>

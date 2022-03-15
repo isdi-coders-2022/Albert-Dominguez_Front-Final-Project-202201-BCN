@@ -1,9 +1,10 @@
 import { actionTypes } from "../actions/actionTypes";
 import { SessionShape } from "../../components/Session/Session";
+import { AnyAction } from "redux";
 
 const sessionsReducer = (
   sessions: SessionShape[] = [],
-  action: { type: string; sessions: SessionShape[] }
+  action: AnyAction = { type: "", sessions }
 ) => {
   let newSessionsList;
 
