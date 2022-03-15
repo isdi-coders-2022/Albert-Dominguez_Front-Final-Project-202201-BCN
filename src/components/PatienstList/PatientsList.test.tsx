@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import PatientsList from "./PatientList";
+import PatientsList from "./PatientsList";
 
 describe("Given a PatientList component", () => {
   describe("When it's instantiated", () => {
