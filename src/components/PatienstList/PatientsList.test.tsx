@@ -88,8 +88,12 @@ describe("Given a PatientList component", () => {
       );
 
       const paragraph = screen.getByText("Petri Petroli");
+      const otherParagraph = screen.getByText(
+        `${patientsArray[0].name} ${patientsArray[0].lastname}`
+      );
 
       expect(paragraph).toBeInTheDocument();
+      expect(otherParagraph).toBeInTheDocument();
     });
   });
 });

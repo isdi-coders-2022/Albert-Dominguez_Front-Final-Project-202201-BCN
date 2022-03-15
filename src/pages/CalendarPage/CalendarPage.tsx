@@ -6,7 +6,7 @@ const Main = styled.main`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  overflow: scroll;
+  overflow: auto;
   padding-top: 18vh;
   padding-bottom: 20vh;
 `;
@@ -14,7 +14,7 @@ const Main = styled.main`
 const CalendarPage = () => {
   return (
     <Main>
-      <h2>YOUR CALENDAR</h2>
+      <h2>MY CALENDAR</h2>
       <CalendarComponent />
     </Main>
   );
