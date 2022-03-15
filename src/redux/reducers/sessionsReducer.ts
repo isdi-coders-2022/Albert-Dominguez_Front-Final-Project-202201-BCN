@@ -7,17 +7,11 @@ const sessionsReducer = (
   action: AnyAction = { type: "", sessions }
 ) => {
   let newSessionsList;
-  switch (action.type) {
-    case actionTypes.loadSessionsList:
-      newSessionsList = [...action.sessions];
-      break;
 
-    case actionTypes.loadOneSession:
-      newSessionsList = sessions.filter((session) => action.id !== session._id);
-      break;
-
-    default:
-      newSessionsList = [...sessions];
+  if (action.type === actionTypes.loadSessionsList) {
+    newSessionsList = [...action.sessions];
+  } else {
+    newSessionsList = [...sessions];
   }
 
   return newSessionsList;

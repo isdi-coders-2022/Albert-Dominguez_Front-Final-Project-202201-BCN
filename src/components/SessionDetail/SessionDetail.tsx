@@ -1,18 +1,5 @@
 import styled from "styled-components";
-
-export interface UserShape {
-  name: string;
-  lastname: string;
-  username: string;
-}
-
-export interface SessionShape {
-  _id: string;
-  when: string;
-  where: string;
-  patient: UserShape;
-  doctor: UserShape;
-}
+import { SessionShape } from "../Session/Session";
 
 interface SessionProps {
   session: SessionShape;
@@ -32,14 +19,19 @@ const Container = styled.div`
 const MeetContainer = styled.div`
   background-color: #f37370;
   color: white;
+  width: 90vw;
   border-radius: 15px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
 
-const Session = ({ session, actionOnClick }: SessionProps): JSX.Element => {
-  return (
+const SessionDetail = ({
+  session,
+  actionOnClick,
+}: SessionProps): JSX.Element => {
+  return session.patient ? (
     <Container onClick={actionOnClick}>
       <MeetContainer>
         <p>{session.when}</p>
@@ -49,7 +41,17 @@ const Session = ({ session, actionOnClick }: SessionProps): JSX.Element => {
       </MeetContainer>
       <h3>MESSAGE BOARD</h3>
     </Container>
+  ) : (
+    <Container onClick={actionOnClick}>
+      <MeetContainer>
+        <p>{session.when}</p>
+        <p>{`At: ${session.where}`}</p>
+        <p>{`Therapist: ${session.doctor.name}`}</p>
+        <p>{`Patient: No longer here`}</p>
+      </MeetContainer>
+      <h3>MESSAGE BOARD</h3>
+    </Container>
   );
 };
 
-export default Session;
+export default SessionDetail;

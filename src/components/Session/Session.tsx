@@ -1,17 +1,22 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { PatientShape } from "../Patient/Patient";
 
 export interface UserShape {
   name: string;
   lastname: string;
   username: string;
+  password: string;
+  sessions: string;
+  progress: string;
 }
 
 export interface SessionShape {
   _id: string;
   when: string;
   where: string;
-  patient: UserShape;
-  doctor: UserShape;
+  patient: PatientShape;
+  doctor: PatientShape;
 }
 
 interface SessionProps {
@@ -31,12 +36,23 @@ const Container = styled.div`
 `;
 
 const Session = ({ session, actionOnClick }: SessionProps): JSX.Element => {
-  return (
-    <Container onClick={actionOnClick}>
+  const navigate = useNavigate();
+  const detailedSession = () => {
+    navigate(`/sessions/${session._id}`);
+  };
+  return session.patient ? (
+    <Container onClick={detailedSession}>
       <p>{session.when}</p>
       <p>{`At: ${session.where}`}</p>
       <p>{`Therapist: ${session.doctor.name}`}</p>
       <p>{`Patient: ${session.patient.name}`}</p>
+    </Container>
+  ) : (
+    <Container onClick={detailedSession}>
+      <p>{session.when}</p>
+      <p>{`At: ${session.where}`}</p>
+      <p>{`Therapist: ${session.doctor.name}`}</p>
+      <p>{`Patient: No longer here`}</p>
     </Container>
   );
 };

@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
 
 import Session, { SessionShape } from "./Session";
 
@@ -9,12 +10,34 @@ describe("Given a Session component", () => {
         _id: "1",
         when: "Tomorrow",
         where: "Where eagles dare",
-        patient: { name: "Teodoro", lastname: "Maloso", username: "Tmaloso" },
-        doctor: { name: "Doctor", lastname: "Strange", username: "DrStrange" },
+        patient: {
+          _id: "234",
+          name: "Teodoro",
+          lastname: "Maloso",
+          username: "Tmaloso",
+          password: "12345",
+          admin: false,
+          sessions: [],
+          progress: "",
+        },
+        doctor: {
+          _id: "234",
+          name: "Doctor",
+          lastname: "Strange",
+          username: "DrStrange",
+          password: "12345",
+          admin: false,
+          sessions: [],
+          progress: "",
+        },
       };
       const mockFunction = jest.fn();
 
-      render(<Session session={firstSession} actionOnClick={mockFunction} />);
+      render(
+        <MemoryRouter>
+          <Session session={firstSession} actionOnClick={mockFunction} />
+        </MemoryRouter>
+      );
 
       const paragraph = screen.getByText("Tomorrow");
 
