@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 import { store } from "../../redux/store";
 import SessionDetailPage from "./SessionDetailPage";
 
@@ -29,9 +30,11 @@ describe("Given a SessionDetailPage component", () => {
   describe("When it's instantiated", () => {
     test("Then it should render a session card", async () => {
       render(
-        <Provider store={store}>
-          <SessionDetailPage />
-        </Provider>
+        <BrowserRouter>
+          <Provider store={store}>
+            <SessionDetailPage />
+          </Provider>
+        </BrowserRouter>
       );
 
       const paragraph = await screen.findByText("1312-01-12T00:14:44.000Z");

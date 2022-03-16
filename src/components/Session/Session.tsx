@@ -1,3 +1,5 @@
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { PatientShape } from "../Patient/Patient";
@@ -21,18 +23,52 @@ export interface SessionShape {
 
 interface SessionProps {
   session: SessionShape;
-  actionOnClick: (event: React.MouseEvent<HTMLElement>) => void;
+  actionOnClick: (event: React.MouseEvent<SVGSVGElement>) => void;
 }
 
 const Container = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   color: white;
   border-style: solid;
   border-radius: 20px;
   border-color: #fa9956;
+  p {
+    margin: 0;
+  }
+`;
+const InfoContainer = styled.div`
+  display: flex;
+  width: 80%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+
+  p {
+    margin: 0;
+  }
+  .linked {
+    cursor: pointer;
+    color: #fa9956;
+  }
+`;
+
+const IconContainer = styled.div`
+  width: 20%;
+  padding-right: 10px;
+  display: flex;
+  justify-content: flex-end;
+`;
+
+const StyledFA = styled(FontAwesomeIcon)`
+  justify-self: flex-end;
+  cursor: pointer;
+  :hover {
+    color: #fa9956;
+  }
 `;
 
 const Session = ({ session, actionOnClick }: SessionProps): JSX.Element => {
@@ -41,18 +77,41 @@ const Session = ({ session, actionOnClick }: SessionProps): JSX.Element => {
     navigate(`/sessions/${session._id}`);
   };
   return session.patient ? (
-    <Container onClick={detailedSession}>
-      <p>{session.when}</p>
-      <p>{`At: ${session.where}`}</p>
-      <p>{`Therapist: ${session.doctor.name}`}</p>
-      <p>{`Patient: ${session.patient.name}`}</p>
+    <Container>
+      <InfoContainer>
+        <p className={"linked"} onClick={detailedSession}>
+          {session.when}
+        </p>
+        <p
+          className={"linked"}
+          onClick={detailedSession}
+        >{`At: ${session.where}`}</p>
+        <p>{`Therapist: ${session.doctor.name}`}</p>
+        <p>{`Patient: ${session.patient.name}`}</p>
+      </InfoContainer>
+      <IconContainer>
+        <StyledFA
+          icon={faTrashCan}
+          onClick={actionOnClick}
+          data-testid="deleteIcon"
+        />
+      </IconContainer>
     </Container>
   ) : (
-    <Container onClick={detailedSession}>
-      <p>{session.when}</p>
-      <p>{`At: ${session.where}`}</p>
-      <p>{`Therapist: ${session.doctor.name}`}</p>
-      <p>{`Patient: No longer here`}</p>
+    <Container>
+      <InfoContainer>
+        <p onClick={detailedSession}>{session.when}</p>
+        <p onClick={detailedSession}>{`At: ${session.where}`}</p>
+        <p>{`Therapist: ${session.doctor.name}`}</p>
+        <p>{`Patient: No longer here`}</p>
+      </InfoContainer>
+      <IconContainer>
+        <FontAwesomeIcon
+          icon={faTrashCan}
+          onClick={actionOnClick}
+          data-testid="deleteIcon"
+        />
+      </IconContainer>
     </Container>
   );
 };

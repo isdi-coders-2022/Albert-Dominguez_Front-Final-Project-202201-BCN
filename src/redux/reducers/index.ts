@@ -5,6 +5,7 @@ import sessionsReducer from "./sessionsReducer";
 
 const rootReducer = combineReducers({
   sessions: sessionsReducer,
+  id: sessionsReducer,
   session: oneSessionReducer,
   patients: patientsReducer,
 });

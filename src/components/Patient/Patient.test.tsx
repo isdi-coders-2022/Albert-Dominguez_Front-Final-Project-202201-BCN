@@ -46,9 +46,7 @@ describe("Given a Patient component", () => {
       render(<Patient patient={firstPatient} actionOnClick={mockFunction} />);
 
       const paragraph = screen.getByText("Petri Petroli");
-      const doctor = screen.getByText(
-        "Tomorrow AT: Where eagles dare Dr: Doctor"
-      );
+      const doctor = screen.getByText("Tomorrow");
 
       expect(paragraph).toBeInTheDocument();
       expect(doctor).toBeInTheDocument();

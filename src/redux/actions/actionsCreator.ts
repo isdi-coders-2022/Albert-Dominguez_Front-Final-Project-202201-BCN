@@ -12,6 +12,11 @@ export const loadOneSessionAction = (session: SessionShape) => ({
   session,
 });
 
+export const deleteOneSessionAction = (id: string) => ({
+  type: actionTypes.deleteOneSession,
+  id,
+});
+
 export const loadPatientsAction = (patients: PatientShape[]) => ({
   type: actionTypes.loadPatientsList,
   patients,
