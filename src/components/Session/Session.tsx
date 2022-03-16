@@ -28,7 +28,7 @@ interface SessionProps {
 
 const Container = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   color: white;
@@ -39,6 +39,29 @@ const Container = styled.div`
     margin: 0;
   }
 `;
+const InfoContainer = styled.div`
+  display: flex;
+  width: 80%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+
+  p {
+    margin: 0;
+  }
+`;
+
+const IconContainer = styled.div`
+  width: 20%;
+  padding-right: 10px;
+  display: flex;
+  justify-content: flex-end;
+`;
+
+const StyledFA = styled(FontAwesomeIcon)`
+  justify-self: flex-end;
+`;
 
 const Session = ({ session, actionOnClick }: SessionProps): JSX.Element => {
   const navigate = useNavigate();
@@ -47,19 +70,27 @@ const Session = ({ session, actionOnClick }: SessionProps): JSX.Element => {
   };
   return session.patient ? (
     <Container onClick={detailedSession}>
-      <p>{session.when}</p>
-      <p>{`At: ${session.where}`}</p>
-      <p>{`Therapist: ${session.doctor.name}`}</p>
-      <p>{`Patient: ${session.patient.name}`}</p>
-      <FontAwesomeIcon icon={faTrashCan} />
+      <InfoContainer>
+        <p>{session.when}</p>
+        <p>{`At: ${session.where}`}</p>
+        <p>{`Therapist: ${session.doctor.name}`}</p>
+        <p>{`Patient: ${session.patient.name}`}</p>
+      </InfoContainer>
+      <IconContainer>
+        <StyledFA icon={faTrashCan} />
+      </IconContainer>
     </Container>
   ) : (
     <Container onClick={detailedSession}>
-      <p>{session.when}</p>
-      <p>{`At: ${session.where}`}</p>
-      <p>{`Therapist: ${session.doctor.name}`}</p>
-      <p>{`Patient: No longer here`}</p>
-      <FontAwesomeIcon icon={faTrashCan} />
+      <InfoContainer>
+        <p>{session.when}</p>
+        <p>{`At: ${session.where}`}</p>
+        <p>{`Therapist: ${session.doctor.name}`}</p>
+        <p>{`Patient: No longer here`}</p>
+      </InfoContainer>
+      <IconContainer>
+        <StyledFA icon={faTrashCan} />
+      </IconContainer>
     </Container>
   );
 };

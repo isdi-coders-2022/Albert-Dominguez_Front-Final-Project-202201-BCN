@@ -64,7 +64,7 @@ const SessionDetail = ({
       <StyledLink to={"/sessions"}>ASK FOR CANCELLATION</StyledLink>
     </SessionContainer>
   ) : (
-    <>
+    <SessionContainer>
       <MeetContainer>
         <p>{session.when}</p>
         <p>{`At: ${session.where}`}</p>
@@ -75,7 +75,7 @@ const SessionDetail = ({
         <h3>MESSAGE BOARD</h3>
       </Container>
       <StyledLink to={"/sessions"}>ASK FOR CANCELLATION</StyledLink>
-    </>
+    </SessionContainer>
   );
 };
 
