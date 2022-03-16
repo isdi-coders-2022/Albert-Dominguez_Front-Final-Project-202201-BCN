@@ -31,4 +31,5 @@ const SessionsPage = () => {
     </Main>
   );
 };
+
 export default SessionsPage;
