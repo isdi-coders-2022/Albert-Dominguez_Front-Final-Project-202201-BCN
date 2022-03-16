@@ -19,3 +19,13 @@ export const loadOneSessionThunk =
     const oneSession = await response.json();
     dispatch(loadOneSessionAction(oneSession));
   };
+
+export const deleteOneSessionThunk =
+  (id: string) => async (dispatch: ThunkDispatch<void, unknown, AnyAction>) => {
+    const response = await fetch(`${process.env.REACT_APP_API}sessions/${id}`, {
+      method: "DELETE",
+    });
+    if (response.ok) {
+      dispatch(deleteOneSessionThunk(id));
+    }
+  };
