@@ -1,6 +1,7 @@
 import { AnyAction } from "redux";
 import { ThunkDispatch } from "redux-thunk";
 import {
+  deleteOneSessionAction,
   loadOneSessionAction,
   loadSessionsAction,
 } from "../actions/actionsCreator";
@@ -26,6 +27,6 @@ export const deleteOneSessionThunk =
       method: "DELETE",
     });
     if (response.ok) {
-      dispatch(deleteOneSessionThunk(id));
+      dispatch(deleteOneSessionAction(id));
     }
   };

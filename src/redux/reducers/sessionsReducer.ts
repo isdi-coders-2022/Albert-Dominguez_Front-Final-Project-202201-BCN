@@ -13,9 +13,7 @@ const sessionsReducer = (
       newSessionsList = [...action.sessions];
       break;
     case actionTypes.deleteOneSession:
-      newSessionsList = sessions.filter(
-        (session) => session._id !== action._id
-      );
+      newSessionsList = sessions.filter((session) => session._id !== action.id);
       break;
     default:
       newSessionsList = [...sessions];

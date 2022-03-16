@@ -1,5 +1,7 @@
 import { render, screen } from "@testing-library/react";
+import { Provider } from "react-redux";
 import { MemoryRouter } from "react-router-dom";
+import { store } from "../../redux/store";
 import { SessionShape } from "../Session/Session";
 import SessionsList from "./SessionsList";
 
@@ -58,15 +60,13 @@ describe("Given a SessionsList component", () => {
           },
         },
       ];
-      const mockFunction = jest.fn();
 
       render(
-        <MemoryRouter>
-          <SessionsList
-            sessionsArray={sessionList}
-            actionOnClick={mockFunction}
-          />
-        </MemoryRouter>
+        <Provider store={store}>
+          <MemoryRouter>
+            <SessionsList sessionsArray={sessionList} />
+          </MemoryRouter>
+        </Provider>
       );
 
       const paragraph = screen.getByText("Tomorrow");

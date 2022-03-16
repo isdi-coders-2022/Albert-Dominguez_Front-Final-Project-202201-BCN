@@ -23,7 +23,7 @@ export interface SessionShape {
 
 interface SessionProps {
   session: SessionShape;
-  actionOnClick: (event: React.MouseEvent<HTMLElement>) => void;
+  actionOnClick: (event: React.MouseEvent<SVGSVGElement>) => void;
 }
 
 const Container = styled.div`
@@ -69,27 +69,27 @@ const Session = ({ session, actionOnClick }: SessionProps): JSX.Element => {
     navigate(`/sessions/${session._id}`);
   };
   return session.patient ? (
-    <Container onClick={detailedSession}>
+    <Container>
       <InfoContainer>
-        <p>{session.when}</p>
-        <p>{`At: ${session.where}`}</p>
+        <p onClick={detailedSession}>{session.when}</p>
+        <p onClick={detailedSession}>{`At: ${session.where}`}</p>
         <p>{`Therapist: ${session.doctor.name}`}</p>
         <p>{`Patient: ${session.patient.name}`}</p>
       </InfoContainer>
       <IconContainer>
-        <StyledFA icon={faTrashCan} />
+        <StyledFA icon={faTrashCan} onClick={actionOnClick} />
       </IconContainer>
     </Container>
   ) : (
-    <Container onClick={detailedSession}>
+    <Container>
       <InfoContainer>
-        <p>{session.when}</p>
-        <p>{`At: ${session.where}`}</p>
+        <p onClick={detailedSession}>{session.when}</p>
+        <p onClick={detailedSession}>{`At: ${session.where}`}</p>
         <p>{`Therapist: ${session.doctor.name}`}</p>
         <p>{`Patient: No longer here`}</p>
       </InfoContainer>
       <IconContainer>
-        <StyledFA icon={faTrashCan} />
+        <FontAwesomeIcon icon={faTrashCan} onClick={actionOnClick} />
       </IconContainer>
     </Container>
   );
