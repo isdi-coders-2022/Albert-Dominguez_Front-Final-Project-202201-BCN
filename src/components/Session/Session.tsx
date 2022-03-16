@@ -1,3 +1,5 @@
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { PatientShape } from "../Patient/Patient";
@@ -33,6 +35,9 @@ const Container = styled.div`
   border-style: solid;
   border-radius: 20px;
   border-color: #fa9956;
+  p {
+    margin: 0;
+  }
 `;
 
 const Session = ({ session, actionOnClick }: SessionProps): JSX.Element => {
@@ -46,6 +51,7 @@ const Session = ({ session, actionOnClick }: SessionProps): JSX.Element => {
       <p>{`At: ${session.where}`}</p>
       <p>{`Therapist: ${session.doctor.name}`}</p>
       <p>{`Patient: ${session.patient.name}`}</p>
+      <FontAwesomeIcon icon={faTrashCan} />
     </Container>
   ) : (
     <Container onClick={detailedSession}>
@@ -53,6 +59,7 @@ const Session = ({ session, actionOnClick }: SessionProps): JSX.Element => {
       <p>{`At: ${session.where}`}</p>
       <p>{`Therapist: ${session.doctor.name}`}</p>
       <p>{`Patient: No longer here`}</p>
+      <FontAwesomeIcon icon={faTrashCan} />
     </Container>
   );
 };

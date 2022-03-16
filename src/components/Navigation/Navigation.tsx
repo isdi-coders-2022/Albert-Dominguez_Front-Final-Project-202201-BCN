@@ -24,7 +24,7 @@ const Anchor = styled.a`
 
 const List = styled.ul`
   list-style: none;
-  margin: 10px;
+  margin-right: 20px;
 `;
 
 const Navigation = (): JSX.Element => {

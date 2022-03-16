@@ -14,6 +14,7 @@ const Futer = styled.footer`
 `;
 const Image = styled.img`
   height: 90%;
+  text-shadow: 0px 0px 10px white;
 `;
 
 const Footer = (): JSX.Element => {

@@ -26,6 +26,9 @@ const Container = styled.div`
   border-style: solid;
   border-radius: 20px;
   border-color: #fa9956;
+  p {
+    margin: 0;
+  }
 `;
 
 const Patient = ({ patient, actionOnClick }: PatientProps): JSX.Element => {
@@ -36,9 +39,11 @@ const Patient = ({ patient, actionOnClick }: PatientProps): JSX.Element => {
       </p>
       <p>{`Progress: ${patient.progress}`}</p>
       {patient.sessions.map((session) => (
-        <p>
-          {session.when} AT: {session.where} Dr: {session.doctor.name}
-        </p>
+        <>
+          <p>{session.when}</p>
+          <p> AT: {session.where}</p>
+          <p>Dr: {session.doctor.name}</p>
+        </>
       ))}
     </Container>
   );
