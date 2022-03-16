@@ -89,4 +89,8 @@ export const handlers = [
       })
     );
   }),
+  rest.delete(
+    `${process.env.REACT_APP_API}sessions/6229d6f84197f335af2c3ca9`,
+    (req, res, ctx) => res(ctx.status(200))
+  ),
 ];

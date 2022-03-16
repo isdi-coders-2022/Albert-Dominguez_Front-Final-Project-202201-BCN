@@ -6,12 +6,12 @@ const sessionsReducer = (
   sessions: SessionShape[] = [],
   action: AnyAction = { type: "", sessions }
 ) => {
-  let newSessionsList;
-
+  let newSessionsList: SessionShape[];
   switch (action.type) {
     case actionTypes.loadSessionsList:
       newSessionsList = [...action.sessions];
       break;
+
     case actionTypes.deleteOneSession:
       newSessionsList = sessions.filter((session) => session._id !== action.id);
       break;

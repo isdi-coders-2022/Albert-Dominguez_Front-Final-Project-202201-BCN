@@ -50,6 +50,10 @@ const InfoContainer = styled.div`
   p {
     margin: 0;
   }
+  .linked {
+    cursor: pointer;
+    color: #fa9956;
+  }
 `;
 
 const IconContainer = styled.div`
@@ -61,6 +65,10 @@ const IconContainer = styled.div`
 
 const StyledFA = styled(FontAwesomeIcon)`
   justify-self: flex-end;
+  cursor: pointer;
+  :hover {
+    color: #fa9956;
+  }
 `;
 
 const Session = ({ session, actionOnClick }: SessionProps): JSX.Element => {
@@ -71,13 +79,22 @@ const Session = ({ session, actionOnClick }: SessionProps): JSX.Element => {
   return session.patient ? (
     <Container>
       <InfoContainer>
-        <p onClick={detailedSession}>{session.when}</p>
-        <p onClick={detailedSession}>{`At: ${session.where}`}</p>
+        <p className={"linked"} onClick={detailedSession}>
+          {session.when}
+        </p>
+        <p
+          className={"linked"}
+          onClick={detailedSession}
+        >{`At: ${session.where}`}</p>
         <p>{`Therapist: ${session.doctor.name}`}</p>
         <p>{`Patient: ${session.patient.name}`}</p>
       </InfoContainer>
       <IconContainer>
-        <StyledFA icon={faTrashCan} onClick={actionOnClick} />
+        <StyledFA
+          icon={faTrashCan}
+          onClick={actionOnClick}
+          data-testid="deleteIcon"
+        />
       </IconContainer>
     </Container>
   ) : (
@@ -89,7 +106,11 @@ const Session = ({ session, actionOnClick }: SessionProps): JSX.Element => {
         <p>{`Patient: No longer here`}</p>
       </InfoContainer>
       <IconContainer>
-        <FontAwesomeIcon icon={faTrashCan} onClick={actionOnClick} />
+        <FontAwesomeIcon
+          icon={faTrashCan}
+          onClick={actionOnClick}
+          data-testid="deleteIcon"
+        />
       </IconContainer>
     </Container>
   );
