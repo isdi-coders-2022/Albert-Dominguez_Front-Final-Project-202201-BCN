@@ -32,6 +32,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   color: white;
+  width: 400px;
   border-style: solid;
   border-radius: 20px;
   border-color: #fa9956;

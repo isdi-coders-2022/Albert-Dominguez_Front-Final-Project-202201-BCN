@@ -1,6 +1,7 @@
 import { AnyAction } from "redux";
 import { ThunkDispatch } from "redux-thunk";
 import {
+  createNewSessionAction,
   deleteOneSessionAction,
   loadOneSessionAction,
   loadSessionsAction,
@@ -28,5 +29,21 @@ export const deleteOneSessionThunk =
     });
     if (response.ok) {
       dispatch(deleteOneSessionAction(id));
+    }
+  };
+
+export const createNewSessionThunk =
+  (session: {}) =>
+  async (dispatch: ThunkDispatch<void, unknown, AnyAction>) => {
+    const response = await fetch(`${process.env.REACT_APP_API}sessions/new}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(session),
+    });
+    if (response.ok) {
+      const newSession = await response.json();
+      dispatch(createNewSessionAction(newSession));
     }
   };
