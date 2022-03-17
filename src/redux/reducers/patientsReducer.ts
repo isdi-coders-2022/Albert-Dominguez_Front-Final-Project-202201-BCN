@@ -9,7 +9,6 @@ const patientsReducer = (
 
   if (action.type === actionTypes.loadPatientsList) {
     newPatientsList = [...action.patients];
-    console.log(newPatientsList);
   } else {
     newPatientsList = [...patients];
   }
