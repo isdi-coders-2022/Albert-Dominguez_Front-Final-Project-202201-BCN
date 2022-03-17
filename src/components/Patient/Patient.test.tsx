@@ -41,9 +41,8 @@ describe("Given a Patient component", () => {
           },
         ],
       };
-      const mockFunction = jest.fn();
 
-      render(<Patient patient={firstPatient} actionOnClick={mockFunction} />);
+      render(<Patient patient={firstPatient} />);
 
       const paragraph = screen.getByText("Petri Petroli");
       const doctor = screen.getByText("Tomorrow");

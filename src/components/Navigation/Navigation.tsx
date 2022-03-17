@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Header = styled.header`
@@ -16,15 +17,20 @@ const Title = styled.h1`
   font-size: large;
 `;
 
-const Anchor = styled.a`
+const Anchor = styled(Link)`
   color: inherit;
   text-decoration: inherit;
   font-weight: inherit;
+  padding-right: 10px;
 `;
 
 const List = styled.ul`
   list-style: none;
   margin-right: 20px;
+  @media (min-width: 400px) {
+    display: flex;
+    flex-direction: row;
+  }
 `;
 
 const Navigation = (): JSX.Element => {
@@ -34,19 +40,20 @@ const Navigation = (): JSX.Element => {
       <nav>
         <List>
           <li>
-            <Anchor href="/calendar">Calendar</Anchor>
+            <Anchor to="/calendar">Calendar</Anchor>
           </li>
           <li>
-            <Anchor href="/sessions">Sessions</Anchor>
+            <Anchor to="/sessions">Sessions</Anchor>
           </li>
           <li>
-            <Anchor href="/patients">Patients</Anchor>
+            <Anchor to="/patients">Patients</Anchor>
           </li>
           <li>
-            <Anchor href="/login">Log In</Anchor>
+            <Anchor to="/login">Log In</Anchor>
           </li>
+
           <li>
-            <Anchor href="/logout">Log Out</Anchor>
+            <Anchor to="/newsession">Create Session</Anchor>
           </li>
         </List>
       </nav>

@@ -27,7 +27,7 @@ const PatientsPage = () => {
   return (
     <Main>
       <h2>MY PATIENTS</h2>
-      <PatientsList patientsArray={patientsList} actionOnClick={() => {}} />
+      <PatientsList patientsArray={patientsList} />
     </Main>
   );
 };

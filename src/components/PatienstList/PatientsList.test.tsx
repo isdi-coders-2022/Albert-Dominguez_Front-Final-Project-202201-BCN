@@ -78,14 +78,8 @@ describe("Given a PatientList component", () => {
           ],
         },
       ];
-      const mockFunction = jest.fn();
 
-      render(
-        <PatientsList
-          patientsArray={patientsArray}
-          actionOnClick={mockFunction}
-        />
-      );
+      render(<PatientsList patientsArray={patientsArray} />);
 
       const paragraph = screen.getByText("Petri Petroli");
       const otherParagraph = screen.getByText(

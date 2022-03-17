@@ -14,7 +14,6 @@ export interface PatientShape {
 
 interface PatientProps {
   patient: PatientShape;
-  actionOnClick: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
 const Container = styled.div`
@@ -26,14 +25,18 @@ const Container = styled.div`
   border-style: solid;
   border-radius: 20px;
   border-color: #fa9956;
+  width: 250px;
   p {
     margin: 0;
   }
+  @media (min-width: 400px) {
+    width: 350px;
+  }
 `;
 
-const Patient = ({ patient, actionOnClick }: PatientProps): JSX.Element => {
-  return (
-    <Container onClick={actionOnClick}>
+const Patient = ({ patient }: PatientProps): JSX.Element => {
+  return patient.sessions ? (
+    <Container>
       <p>
         {patient.name} {patient.lastname}
       </p>
@@ -42,9 +45,15 @@ const Patient = ({ patient, actionOnClick }: PatientProps): JSX.Element => {
         <>
           <p>{session.when}</p>
           <p> AT: {session.where}</p>
-          <p>Dr: {session.doctor.name}</p>
         </>
       ))}
+    </Container>
+  ) : (
+    <Container>
+      <p>
+        {patient.name} {patient.lastname}
+      </p>
+      <p>{`Progress: ${patient.progress}`}</p>
     </Container>
   );
 };
