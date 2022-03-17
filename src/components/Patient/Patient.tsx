@@ -14,7 +14,6 @@ export interface PatientShape {
 
 interface PatientProps {
   patient: PatientShape;
-  actionOnClick: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
 const Container = styled.div`
@@ -35,9 +34,9 @@ const Container = styled.div`
   }
 `;
 
-const Patient = ({ patient, actionOnClick }: PatientProps): JSX.Element => {
+const Patient = ({ patient }: PatientProps): JSX.Element => {
   return patient.sessions ? (
-    <Container onClick={actionOnClick}>
+    <Container>
       <p>
         {patient.name} {patient.lastname}
       </p>
@@ -50,7 +49,7 @@ const Patient = ({ patient, actionOnClick }: PatientProps): JSX.Element => {
       ))}
     </Container>
   ) : (
-    <Container onClick={actionOnClick}>
+    <Container>
       <p>
         {patient.name} {patient.lastname}
       </p>
