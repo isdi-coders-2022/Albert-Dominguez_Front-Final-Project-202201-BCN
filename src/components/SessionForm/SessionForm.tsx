@@ -23,6 +23,13 @@ const Form = styled.form`
   input {
     border-radius: 10px;
   }
+  select {
+    border-radius: 10px;
+    option:hover {
+      background-color: #f37370;
+    }
+  }
+
   button {
     background-color: #fa9956;
     border-style: none;
@@ -42,9 +49,15 @@ const SessionForm = (): JSX.Element => {
         <label htmlFor="where">Place: </label>
         <input type={"text"} id="where" />
         <label htmlFor="doctor">Doctor: </label>
-        <input type={"text"} id="doctor" />
+        <select id="doctor">
+          <option value="someone">Someone</option>
+          <option value="anotherone">Another One</option>
+        </select>
         <label htmlFor="patient">Patient: </label>
-        <input type={"text"} id="patient" />
+        <select id="patient">
+          <option value="someone">Someone</option>
+          <option value="anotherone">Another One</option>
+        </select>
         <button>CREATE SESSION</button>
       </Form>
     </FormContainer>

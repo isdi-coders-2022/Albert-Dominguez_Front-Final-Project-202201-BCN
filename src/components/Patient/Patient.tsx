@@ -26,13 +26,17 @@ const Container = styled.div`
   border-style: solid;
   border-radius: 20px;
   border-color: #fa9956;
+  width: 250px;
   p {
     margin: 0;
+  }
+  @media (min-width: 400px) {
+    width: 350px;
   }
 `;
 
 const Patient = ({ patient, actionOnClick }: PatientProps): JSX.Element => {
-  return (
+  return patient.sessions ? (
     <Container onClick={actionOnClick}>
       <p>
         {patient.name} {patient.lastname}
@@ -42,9 +46,15 @@ const Patient = ({ patient, actionOnClick }: PatientProps): JSX.Element => {
         <>
           <p>{session.when}</p>
           <p> AT: {session.where}</p>
-          <p>Dr: {session.doctor.name}</p>
         </>
       ))}
+    </Container>
+  ) : (
+    <Container onClick={actionOnClick}>
+      <p>
+        {patient.name} {patient.lastname}
+      </p>
+      <p>{`Progress: ${patient.progress}`}</p>
     </Container>
   );
 };
