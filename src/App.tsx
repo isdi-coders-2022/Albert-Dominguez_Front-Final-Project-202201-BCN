@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import Navigation from "./components/Navigation/Navigation";
 import CalendarPage from "./pages/CalendarPage/CalendarPage";
+import NewSessionPage from "./pages/NewSessionPage/NewSessionPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import PatientsPage from "./pages/PatientsPage/PatientsPage";
 import SessionDetailPage from "./pages/SessionDetailPage/SessionDetailPage";
@@ -14,10 +15,12 @@ function App() {
       <Navigation />
       <Routes>
         <Route>
+          <Route path="/" element={<CalendarPage />} />
           <Route path="/patients" element={<PatientsPage />} />
           <Route path="/sessions" element={<SessionsPage />} />
           <Route path="/sessions/:id" element={<SessionDetailPage />} />
           <Route path="/calendar" element={<CalendarPage />} />
+          <Route path="/newsession" element={<NewSessionPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
