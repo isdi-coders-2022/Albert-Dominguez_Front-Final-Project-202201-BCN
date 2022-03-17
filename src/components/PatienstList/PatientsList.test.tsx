@@ -6,7 +6,7 @@ describe("Given a PatientList component", () => {
     test("Then it should render a list of patient cards", () => {
       const patientsArray = [
         {
-          _id: "11",
+          _id: "21",
           name: "Petri",
           lastname: "Petroli",
           username: "pptroli",

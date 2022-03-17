@@ -23,7 +23,7 @@ describe("Given a SessionsList component", () => {
         progress: "",
       },
       doctor: {
-        _id: "234",
+        _id: "2345",
         name: "Doctor",
         lastname: "Strange",
         username: "DrStrange",
@@ -38,7 +38,7 @@ describe("Given a SessionsList component", () => {
       when: "Today",
       where: "Where eagles dare",
       patient: {
-        _id: "234",
+        _id: "1234",
         name: "Teodoro",
         lastname: "Maloso",
         username: "Tmaloso",
@@ -48,7 +48,7 @@ describe("Given a SessionsList component", () => {
         progress: "",
       },
       doctor: {
-        _id: "234",
+        _id: "12345",
         name: "Doctor",
         lastname: "Strange",
         username: "DrStrange",
