@@ -46,11 +46,34 @@
       "request": {
         "method": "DELETE",
         "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
         "url": {
           "raw": "https://nicest-shrink.onrender.com/sessions/6229d6f84197f335af2c3ca9",
           "protocol": "https",
           "host": ["nicest-shrink", "onrender", "com"],
           "path": ["sessions", "6229d6f84197f335af2c3ca9"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Session",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "https://nicest-shrink.onrender.com/sessions/new",
+          "protocol": "https",
+          "host": ["nicest-shrink", "onrender", "com"],
+          "path": ["sessions", "new"]
         }
       },
       "response": []
