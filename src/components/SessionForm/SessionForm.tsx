@@ -1,4 +1,10 @@
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { RootState } from "../../redux/store";
+import { createNewSessionThunk } from "../../redux/thunks/sessionsThunk";
+import { loadPatientssListThunk } from "../../redux/thunks/usersThunk";
 
 const FormContainer = styled.div`
   width: 300px;
@@ -37,28 +43,97 @@ const Form = styled.form`
     margin-top: 10px;
     color: white;
     cursor: pointer;
+    :disabled {
+      opacity: 0.5;
+    }
   }
 `;
 
 const SessionForm = (): JSX.Element => {
+  const dispatch = useDispatch();
+  const patientsList = useSelector((state: RootState) => state.patients);
+
+  useEffect(() => {
+    dispatch(loadPatientssListThunk);
+  }, [dispatch]);
+
+  const emptyDataForm = {
+    when: "",
+    where: "",
+    doctor: "",
+    patient: "",
+  };
+
+  const handleForm = (event: any) => {
+    setFormData({
+      ...formData,
+      [event.target.id]: event.target.value,
+    });
+  };
+  const [formData, setFormData] = useState(emptyDataForm);
+
+  const resetForm = () => {
+    setFormData(emptyDataForm);
+  };
+
+  const formSubmit = (event: any) => {
+    event.preventDefault();
+    dispatch(createNewSessionThunk(formData));
+    goToSessionsPage();
+    resetForm();
+  };
+
+  const navigate = useNavigate();
+  const goToSessionsPage = () => {
+    navigate("/sessions");
+  };
+
   return (
     <FormContainer>
-      <Form>
+      <Form onSubmit={formSubmit}>
         <label htmlFor="when">Date: </label>
-        <input type={"datetime-local"} id="when" />
+        <input
+          type={"datetime-local"}
+          id="when"
+          value={formData.when}
+          onChange={handleForm}
+        />
         <label htmlFor="where">Place: </label>
-        <input type={"text"} id="where" />
+        <input
+          type={"text"}
+          id="where"
+          value={formData.where}
+          onChange={handleForm}
+        />
         <label htmlFor="doctor">Doctor: </label>
-        <select id="doctor">
-          <option value="someone">Someone</option>
-          <option value="anotherone">Another One</option>
+        <select id="doctor" value={formData.doctor} onChange={handleForm}>
+          {patientsList.map((user) => (
+            <option key={user._id} value={user._id}>
+              {user.name}
+            </option>
+          ))}
         </select>
         <label htmlFor="patient">Patient: </label>
-        <select id="patient">
-          <option value="someone">Someone</option>
-          <option value="anotherone">Another One</option>
+        <select id="patient" value={formData.patient} onChange={handleForm}>
+          {patientsList.map((user) => (
+            <option key={user._id} value={user._id}>
+              {user.name}
+            </option>
+          ))}
         </select>
-        <button>CREATE SESSION</button>
+        <button
+          type={"submit"}
+          disabled={
+            formData.patient === "" ||
+            formData.doctor === "" ||
+            formData.when === "" ||
+            formData.where === ""
+              ? true
+              : false
+          }
+        >
+          CREATE SESSION
+        </button>
       </Form>
     </FormContainer>
   );

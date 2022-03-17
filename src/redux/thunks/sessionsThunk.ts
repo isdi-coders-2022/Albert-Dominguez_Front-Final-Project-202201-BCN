@@ -35,7 +35,7 @@ export const deleteOneSessionThunk =
 export const createNewSessionThunk =
   (session: {}) =>
   async (dispatch: ThunkDispatch<void, unknown, AnyAction>) => {
-    const response = await fetch(`${process.env.REACT_APP_API}sessions/new}`, {
+    const response = await fetch(`${process.env.REACT_APP_API}sessions/new`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
