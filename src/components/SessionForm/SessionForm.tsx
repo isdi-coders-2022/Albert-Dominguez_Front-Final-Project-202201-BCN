@@ -79,7 +79,10 @@ const SessionForm = (): JSX.Element => {
   const formSubmit = (event: any) => {
     event.preventDefault();
     dispatch(createNewSessionThunk(formData));
-    goToSessionsPage();
+    setTimeout(() => {
+      goToSessionsPage();
+    }, 2000);
+
     resetForm();
   };
 

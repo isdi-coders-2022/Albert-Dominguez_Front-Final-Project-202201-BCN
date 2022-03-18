@@ -3,6 +3,13 @@ body {
   margin: 0;
   font-family: "Urbanist", sans-serif;
   background-color: #23559c;
+  background: linear-gradient(
+      0deg,
+      rgba(50, 0, 143, 0.7),
+      rgba(51, 0, 145, 0.7)
+    ),
+    url("./file-20210401-13-z6rl6z.avif");
+  background-size: auto 100vh;
   color: white;
 }
 

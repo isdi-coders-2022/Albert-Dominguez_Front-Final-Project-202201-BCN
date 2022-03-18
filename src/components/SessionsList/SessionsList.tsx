@@ -1,11 +1,7 @@
-import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 
-import {
-  deleteOneSessionThunk,
-  loadSessionsListThunk,
-} from "../../redux/thunks/sessionsThunk";
+import { deleteOneSessionThunk } from "../../redux/thunks/sessionsThunk";
 import Session, { SessionShape } from "../Session/Session";
 
 interface SessionsListProps {
@@ -23,10 +19,6 @@ const ListContainer = styled.div`
 
 const SessionsList = ({ sessionsArray }: SessionsListProps): JSX.Element => {
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(loadSessionsListThunk);
-  }, [dispatch]);
 
   const deleteSession = (id: string) => {
     dispatch(deleteOneSessionThunk(id));

@@ -12,8 +12,9 @@ const Futer = styled.footer`
   height: 15vh;
   bottom: 0;
   box-shadow: 0px 0px 10px white;
-  @media (min-width: 400px) {
+  @media (min-width: 450px) {
     height: 8vh;
+    width: 100%;
   }
 `;
 const HacQuatre = styled.h4`

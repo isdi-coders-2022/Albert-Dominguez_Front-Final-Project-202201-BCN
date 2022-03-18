@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { SessionShape } from "../Session/Session";
+import { DateTime } from "luxon";
 
 interface SessionProps {
   session: SessionShape;
@@ -53,7 +54,7 @@ const SessionDetail = ({
   return session.patient ? (
     <SessionContainer>
       <MeetContainer>
-        <p>{session.when}</p>
+        <p>{DateTime.fromISO(session.when).toRelativeCalendar()}</p>
         <p>{`At: ${session.where}`}</p>
         <p>{`Therapist: ${session.doctor.name}`}</p>
         <p>{`Patient: ${session.patient.name}`}</p>
@@ -66,7 +67,7 @@ const SessionDetail = ({
   ) : (
     <SessionContainer>
       <MeetContainer>
-        <p>{session.when}</p>
+        <p>{DateTime.fromISO(session.when).toRelativeCalendar()}</p>
         <p>{`At: ${session.where}`}</p>
         <p>{`Therapist: ${session.doctor.name}`}</p>
         <p>{`Patient: No longer here`}</p>
