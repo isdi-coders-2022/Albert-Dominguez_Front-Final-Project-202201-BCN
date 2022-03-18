@@ -1,4 +1,6 @@
+import { useState } from "react";
 import styled from "styled-components";
+import FooterMenu from "../FooterMenu/FooterMenu";
 
 const Futer = styled.footer`
   display: flex;
@@ -34,10 +36,22 @@ const Image = styled.img`
 `;
 
 const Footer = (): JSX.Element => {
+  const [isActive, setIsActive] = useState(false);
+  const toggleActive = () => {
+    setIsActive(isActive ? false : true);
+  };
+  const setUnactive = () => {
+    setIsActive(false);
+  };
   return (
     <Futer>
+      <FooterMenu isActive={isActive} actionOnClick={setUnactive} />
       <HacQuatre>MENU</HacQuatre>
-      <Image src={require("../../logo.png")} alt="Nicest Shrink Logo" />
+      <Image
+        src={require("../../logo.png")}
+        alt="Nicest Shrink Logo"
+        onClick={toggleActive}
+      />
     </Futer>
   );
 };

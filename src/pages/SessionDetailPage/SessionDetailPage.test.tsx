@@ -37,7 +37,7 @@ describe("Given a SessionDetailPage component", () => {
         </BrowserRouter>
       );
 
-      const paragraph = await screen.findByText("1312-01-12T00:14:44.000Z");
+      const paragraph = await screen.findByText("fa 710 anys");
 
       expect(paragraph).toBeInTheDocument();
     });

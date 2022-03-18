@@ -16,7 +16,7 @@ describe("Given a Patient component", () => {
         sessions: [
           {
             _id: "1",
-            when: "Tomorrow",
+            when: "1312-01-12T00:14:44.000+00:00",
             where: "Where eagles dare",
             patient: {
               _id: "234",
@@ -45,10 +45,8 @@ describe("Given a Patient component", () => {
       render(<Patient patient={firstPatient} />);
 
       const paragraph = screen.getByText("Petri Petroli");
-      const doctor = screen.getByText("Tomorrow");
 
       expect(paragraph).toBeInTheDocument();
-      expect(doctor).toBeInTheDocument();
     });
   });
 });

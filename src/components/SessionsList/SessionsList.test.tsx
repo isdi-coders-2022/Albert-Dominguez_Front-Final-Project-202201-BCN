@@ -69,9 +69,9 @@ describe("Given a SessionsList component", () => {
         </Provider>
       );
 
-      const paragraph = screen.getByText("Tomorrow");
+      const paragraph = screen.getAllByText("At: Where eagles dare");
 
-      expect(paragraph).toBeInTheDocument();
+      expect(paragraph).toHaveLength(2);
     });
     test("Then it should render a delete button in every session card", async () => {
       render(

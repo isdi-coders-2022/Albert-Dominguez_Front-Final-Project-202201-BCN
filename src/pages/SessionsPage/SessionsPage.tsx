@@ -7,7 +7,7 @@ import { loadSessionsListThunk } from "../../redux/thunks/sessionsThunk";
 
 const Main = styled.main`
   display: flex;
-  width: 100%;
+  width: 100vw;
   justify-content: center;
   align-items: center;
   flex-direction: column;
