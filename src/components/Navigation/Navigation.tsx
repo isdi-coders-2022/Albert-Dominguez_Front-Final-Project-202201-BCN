@@ -27,6 +27,7 @@ const Anchor = styled(Link)`
 const List = styled.ul`
   list-style: none;
   margin-right: 20px;
+  display: none;
   @media (min-width: 400px) {
     display: flex;
     flex-direction: row;
