@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { SessionShape } from "../Session/Session";
-import { DateTime } from "luxon";
+import { DateTime, Settings } from "luxon";
 
+Settings.defaultLocale = "ca";
 interface SessionProps {
   session: SessionShape;
   actionOnClick: (event: React.MouseEvent<HTMLElement>) => void;
