@@ -40,7 +40,7 @@ describe("Given a Session component", () => {
         </MemoryRouter>
       );
 
-      const paragraph = screen.getByText("Tomorrow");
+      const paragraph = screen.getByText("At: Where eagles dare");
 
       expect(paragraph).toBeInTheDocument();
     });

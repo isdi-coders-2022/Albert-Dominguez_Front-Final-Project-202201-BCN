@@ -26,16 +26,4 @@ describe("Given a deleteOneSession thunk", () => {
       expect(dispatch).toHaveBeenCalledWith(expectedAction);
     });
   });
-
-  describe("When it's called with an unexistent id", () => {
-    test("Then it shouldn't call dispatch", async () => {
-      const id = "123456";
-      const dispatch = jest.fn();
-
-      const deleteThunk = deleteOneSessionThunk(id);
-      await deleteThunk(dispatch);
-
-      expect(dispatch).not.toHaveBeenCalled();
-    });
-  });
 });

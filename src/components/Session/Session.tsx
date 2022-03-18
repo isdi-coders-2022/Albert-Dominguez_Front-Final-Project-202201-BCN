@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { PatientShape } from "../Patient/Patient";
+import { DateTime } from "luxon";
 
 export interface UserShape {
   name: string;
@@ -15,7 +16,7 @@ export interface UserShape {
 
 export interface SessionShape {
   _id: string;
-  when: string;
+  when: any;
   where: string;
   patient: PatientShape;
   doctor: PatientShape;
@@ -28,16 +29,20 @@ interface SessionProps {
 
 const Container = styled.div`
   display: flex;
+  position: relative;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   color: white;
-  width: 400px;
+  width: 80vw;
   border-style: solid;
   border-radius: 20px;
   border-color: #fa9956;
   p {
     margin: 0;
+  }
+  @media (min-width: 400px) {
+    width: 350px;
   }
 `;
 const InfoContainer = styled.div`
@@ -62,11 +67,14 @@ const IconContainer = styled.div`
   padding-right: 10px;
   display: flex;
   justify-content: flex-end;
+  position: absolute;
+  right: 3%;
 `;
 
 const StyledFA = styled(FontAwesomeIcon)`
   justify-self: flex-end;
   cursor: pointer;
+  position: relative;
   :hover {
     color: #fa9956;
   }
@@ -81,7 +89,7 @@ const Session = ({ session, actionOnClick }: SessionProps): JSX.Element => {
     <Container>
       <InfoContainer>
         <p className={"linked"} onClick={detailedSession}>
-          {session.when}
+          {DateTime.fromISO(session.when).toRelativeCalendar()}
         </p>
         <p
           className={"linked"}
@@ -101,7 +109,10 @@ const Session = ({ session, actionOnClick }: SessionProps): JSX.Element => {
   ) : (
     <Container>
       <InfoContainer>
-        <p onClick={detailedSession}>{session.when}</p>
+        <p onClick={detailedSession}>
+          {" "}
+          {DateTime.fromISO(session.when).toRelativeCalendar()}
+        </p>
         <p onClick={detailedSession}>{`At: ${session.where}`}</p>
         <p>{`Therapist: ${session.doctor.name}`}</p>
         <p>{`Patient: No longer here`}</p>

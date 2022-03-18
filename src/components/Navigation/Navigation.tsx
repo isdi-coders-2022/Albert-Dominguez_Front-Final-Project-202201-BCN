@@ -4,12 +4,13 @@ import styled from "styled-components";
 const Header = styled.header`
   background-color: #f37370;
   margin-top: 0;
+  margin-bottom: 5vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 100vw;
-  position: fixed;
+  width: 100%;
+  position: relative;
   box-shadow: 0px 0px 10px white;
 `;
 const Title = styled.h1`
@@ -27,7 +28,8 @@ const Anchor = styled(Link)`
 const List = styled.ul`
   list-style: none;
   margin-right: 20px;
-  @media (min-width: 400px) {
+  display: none;
+  @media (min-width: 450px) {
     display: flex;
     flex-direction: row;
   }

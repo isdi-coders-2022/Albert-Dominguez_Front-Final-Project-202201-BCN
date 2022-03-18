@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { SessionShape } from "../Session/Session";
+import { DateTime } from "luxon";
 
 export interface PatientShape {
   _id: string;
@@ -43,7 +44,7 @@ const Patient = ({ patient }: PatientProps): JSX.Element => {
       <p>{`Progress: ${patient.progress}`}</p>
       {patient.sessions.map((session) => (
         <>
-          <p>{session.when}</p>
+          <p> {DateTime.fromISO(session.when).toRelativeCalendar()}</p>
           <p> AT: {session.where}</p>
         </>
       ))}

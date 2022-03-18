@@ -15,12 +15,12 @@ function App() {
       <Navigation />
       <Routes>
         <Route>
-          <Route path="/" element={<CalendarPage />} />
+          <Route path="/sessions/:id" element={<SessionDetailPage />} />
           <Route path="/patients" element={<PatientsPage />} />
           <Route path="/sessions" element={<SessionsPage />} />
-          <Route path="/sessions/:id" element={<SessionDetailPage />} />
           <Route path="/calendar" element={<CalendarPage />} />
-          <Route path="/newsession" element={<NewSessionPage />} />
+          <Route path="/newsession" element={<NewSessionPage />} />{" "}
+          <Route path="/" element={<CalendarPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

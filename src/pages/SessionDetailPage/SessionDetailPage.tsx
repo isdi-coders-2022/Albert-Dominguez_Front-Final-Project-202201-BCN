@@ -14,7 +14,6 @@ const Main = styled.main`
   align-items: center;
   flex-direction: column;
   overflow: auto;
-  padding-top: 18vh;
   padding-bottom: 20vh;
 `;
 
