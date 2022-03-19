@@ -10,7 +10,7 @@ body {
       rgba(51, 0, 145, 0.7)
     ),
     url("https://st3.depositphotos.com/1031174/12522/i/450/depositphotos_125225762-stock-photo-clouds-in-sky.jpg");
-  background-size: auto 100%;
+  background-size: cover;
   color: white;
 }
 
