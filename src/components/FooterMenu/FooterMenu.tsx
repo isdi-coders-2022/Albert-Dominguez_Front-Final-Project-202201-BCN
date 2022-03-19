@@ -13,6 +13,8 @@ const Container = styled.div`
   &.active {
     position: absolute;
     display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-end;
     bottom: 0;
     justify-content: center;
     background: rgba(0, 0, 0, 0.7);
@@ -24,7 +26,7 @@ const List = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   position: absolute;
   padding: 0;
   margin-block-start: 0;
@@ -32,7 +34,7 @@ const List = styled.ul`
   bottom: 15vh;
   width: 100vw;
   height: 100vh;
-  gap: 8px;
+
   background: rgba(0, 0, 0, 0.5);
   li {
     margin: 0;
@@ -43,9 +45,12 @@ const Div = styled.div`
   background-color: #fa9956;
   display: flex;
   justify-content: center;
+  align-items: center;
   color: white;
+  font-size: 30px;
   border-radius: 10px;
   width: 50vw;
+  margin-bottom: 20px;
   a {
     color: inherit;
     text-decoration: inherit;
