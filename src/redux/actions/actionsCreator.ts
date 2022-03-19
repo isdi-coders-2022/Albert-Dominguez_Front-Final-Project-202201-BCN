@@ -22,6 +22,11 @@ export const createNewSessionAction = (session: SessionShape) => ({
   session,
 });
 
+export const updateSessionAction = (session: SessionShape) => ({
+  type: actionTypes.updateSession,
+  session,
+});
+
 export const loadPatientsAction = (patients: PatientShape[]) => ({
   type: actionTypes.loadPatientsList,
   patients,

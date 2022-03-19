@@ -57,7 +57,7 @@ const SessionDetail = ({
       <MeetContainer>
         <p>{DateTime.fromISO(session.when).toRelativeCalendar()}</p>
         <p>{`At: ${session.where}`}</p>
-        <p>{`Therapist: ${session.doctor.name}`}</p>
+        <p>{`Therapist: ${session.doctor?.name}`}</p>
         <p>{`Patient: ${session.patient.name}`}</p>
       </MeetContainer>{" "}
       <Container onClick={actionOnClick}>
@@ -70,7 +70,7 @@ const SessionDetail = ({
       <MeetContainer>
         <p>{DateTime.fromISO(session.when).toRelativeCalendar()}</p>
         <p>{`At: ${session.where}`}</p>
-        <p>{`Therapist: ${session.doctor.name}`}</p>
+        <p>{`Therapist: ${session.doctor?.name}`}</p>
         <p>{`Patient: No longer here`}</p>
       </MeetContainer>
       <Container onClick={actionOnClick}>

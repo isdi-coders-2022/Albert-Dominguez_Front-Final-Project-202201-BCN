@@ -8,6 +8,7 @@ import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import PatientsPage from "./pages/PatientsPage/PatientsPage";
 import SessionDetailPage from "./pages/SessionDetailPage/SessionDetailPage";
 import SessionsPage from "./pages/SessionsPage/SessionsPage";
+import UpdateSessionPage from "./pages/UpdateSessionPage/UpdateSessionPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Navigation />
       <Routes>
         <Route>
+          <Route path="/updatesession/:id" element={<UpdateSessionPage />} />
           <Route path="/sessions/:id" element={<SessionDetailPage />} />
           <Route path="/patients" element={<PatientsPage />} />
           <Route path="/sessions" element={<SessionsPage />} />
