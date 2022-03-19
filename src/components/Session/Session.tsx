@@ -19,8 +19,8 @@ export interface SessionShape {
   _id: string;
   when: any;
   where: string;
-  patient: PatientShape;
-  doctor: PatientShape;
+  patient?: PatientShape;
+  doctor?: PatientShape;
 }
 
 interface SessionProps {
@@ -92,6 +92,9 @@ const Session = ({ session, actionOnClick }: SessionProps): JSX.Element => {
   const detailedSession = () => {
     navigate(`/sessions/${session._id}`);
   };
+  const updateSession = () => {
+    navigate(`/updatesession/${session._id}`);
+  };
   return session.patient ? (
     <Container>
       <InfoContainer>
@@ -102,11 +105,11 @@ const Session = ({ session, actionOnClick }: SessionProps): JSX.Element => {
           className={"linked"}
           onClick={detailedSession}
         >{`At: ${session.where}`}</p>
-        <p>{`Therapist: ${session.doctor.name}`}</p>
+        <p>{`Therapist: ${session.doctor?.name}`}</p>
         <p>{`Patient: ${session.patient.name}`}</p>
       </InfoContainer>
       <IconContainer>
-        <StyledFA icon={faEdit} />
+        <StyledFA icon={faEdit} onClick={updateSession} />
         <StyledFA
           icon={faTrashCan}
           onClick={actionOnClick}
@@ -122,11 +125,11 @@ const Session = ({ session, actionOnClick }: SessionProps): JSX.Element => {
           {DateTime.fromISO(session.when).toRelativeCalendar()}
         </p>
         <p onClick={detailedSession}>{`At: ${session.where}`}</p>
-        <p>{`Therapist: ${session.doctor.name}`}</p>
+        <p>{`Therapist: ${session.doctor?.name}`}</p>
         <p>{`Patient: No longer here`}</p>
       </InfoContainer>
       <IconContainer>
-        <StyledFA icon={faEdit} />
+        <StyledFA icon={faEdit} onClick={updateSession} />
         <FontAwesomeIcon
           icon={faTrashCan}
           onClick={actionOnClick}

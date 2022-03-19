@@ -30,7 +30,7 @@ const oneSessionReducer = (
   },
   action: AnyAction = { type: "", session }
 ) => {
-  let newSession: SessionShape;
+  let newSession;
 
   switch (action.type) {
     case actionTypes.loadOneSession:

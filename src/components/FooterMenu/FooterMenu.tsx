@@ -39,6 +39,9 @@ const List = styled.ul`
   li {
     margin: 0;
   }
+  @media (min-width: 400px) {
+    display: none;
+  }
 `;
 
 const Div = styled.div`
@@ -46,8 +49,9 @@ const Div = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   color: white;
-  font-size: 30px;
+  font-size: 25px;
   border-radius: 10px;
   width: 50vw;
   margin-bottom: 20px;
