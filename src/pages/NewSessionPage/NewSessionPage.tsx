@@ -8,6 +8,7 @@ const Main = styled.main`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding-top: 10vh;
   overflow: auto;
   padding-bottom: 20vh;
 `;

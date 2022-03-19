@@ -5,16 +5,18 @@ const Header = styled.header`
   background-color: #f37370;
   margin-top: 0;
   margin-bottom: 5vh;
+  z-index: 1;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  position: relative;
+  position: fixed;
   box-shadow: 0px 0px 10px white;
 `;
 const Title = styled.h1`
-  margin: 10px;
+  margin: 20px;
+  width: 130px;
   font-size: large;
 `;
 
@@ -28,10 +30,15 @@ const Anchor = styled(Link)`
 const List = styled.ul`
   list-style: none;
   margin-right: 20px;
+  padding-left: 0;
   display: none;
+
   @media (min-width: 450px) {
     display: flex;
     flex-direction: row;
+  }
+  @media (max-width: 560px) {
+    font-size: 10px;
   }
 `;
 
@@ -51,11 +58,11 @@ const Navigation = (): JSX.Element => {
             <Anchor to="/patients">Patients</Anchor>
           </li>
           <li>
-            <Anchor to="/login">Log In</Anchor>
+            <Anchor to="/login">LogIn</Anchor>
           </li>
 
           <li>
-            <Anchor to="/newsession">Create Session</Anchor>
+            <Anchor to="/newsession">New Session</Anchor>
           </li>
         </List>
       </nav>

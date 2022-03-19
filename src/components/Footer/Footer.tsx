@@ -5,6 +5,7 @@ import FooterMenu from "../FooterMenu/FooterMenu";
 const Futer = styled.footer`
   display: flex;
   position: fixed;
+  flex-wrap: wrap;
   flex-direction: column;
   width: 100vw;
   justify-content: center;
@@ -15,6 +16,7 @@ const Futer = styled.footer`
   bottom: 0;
   box-shadow: 0px 0px 10px white;
   @media (min-width: 450px) {
+    position: fixed;
     height: 8vh;
     width: 100%;
   }
