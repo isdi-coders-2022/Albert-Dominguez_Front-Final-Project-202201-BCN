@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { PatientShape } from "../Patient/Patient";
 import { DateTime } from "luxon";
+import { faEdit } from "@fortawesome/free-regular-svg-icons";
 
 export interface UserShape {
   name: string;
@@ -56,6 +57,9 @@ const InfoContainer = styled.div`
   p {
     margin: 0;
   }
+  &:hover .linked {
+    color: white;
+  }
   .linked {
     cursor: pointer;
     color: #fa9956;
@@ -65,16 +69,19 @@ const InfoContainer = styled.div`
 const IconContainer = styled.div`
   width: 20%;
   padding-right: 10px;
+  font-size: 18px;
   display: flex;
+  flex-direction: column;
   justify-content: flex-end;
   position: absolute;
-  right: 3%;
+  right: -5%;
 `;
 
 const StyledFA = styled(FontAwesomeIcon)`
   justify-self: flex-end;
   cursor: pointer;
   position: relative;
+  padding: 10px;
   :hover {
     color: #fa9956;
   }
@@ -99,6 +106,7 @@ const Session = ({ session, actionOnClick }: SessionProps): JSX.Element => {
         <p>{`Patient: ${session.patient.name}`}</p>
       </InfoContainer>
       <IconContainer>
+        <StyledFA icon={faEdit} />
         <StyledFA
           icon={faTrashCan}
           onClick={actionOnClick}
@@ -118,6 +126,7 @@ const Session = ({ session, actionOnClick }: SessionProps): JSX.Element => {
         <p>{`Patient: No longer here`}</p>
       </InfoContainer>
       <IconContainer>
+        <StyledFA icon={faEdit} />
         <FontAwesomeIcon
           icon={faTrashCan}
           onClick={actionOnClick}

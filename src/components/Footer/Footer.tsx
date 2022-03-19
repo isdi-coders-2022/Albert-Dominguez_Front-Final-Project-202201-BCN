@@ -15,6 +15,7 @@ const Futer = styled.footer`
   height: 15vh;
   bottom: 0;
   box-shadow: 0px 0px 10px white;
+
   @media (min-width: 450px) {
     position: fixed;
     height: 8vh;
