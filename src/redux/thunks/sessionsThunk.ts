@@ -22,6 +22,7 @@ export const loadOneSessionThunk =
     const response = await fetch(`${process.env.REACT_APP_API}sessions/${id}`);
     const oneSession = await response.json();
     dispatch(loadOneSessionAction(oneSession));
+    console.log(oneSession + "hola que tal");
   };
 
 export const deleteOneSessionThunk =

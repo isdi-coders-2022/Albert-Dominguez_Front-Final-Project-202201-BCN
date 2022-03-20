@@ -2,11 +2,8 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
-import { RootState } from "../../redux/store";
-import {
-  loadOneSessionThunk,
-  updateSessionThunk,
-} from "../../redux/thunks/sessionsThunk";
+import { RootState, store } from "../../redux/store";
+import { updateSessionThunk } from "../../redux/thunks/sessionsThunk";
 import { loadPatientssListThunk } from "../../redux/thunks/usersThunk";
 
 const FormContainer = styled.div`
@@ -55,34 +52,32 @@ const Form = styled.form`
 const UpdateSessionForm = (): JSX.Element => {
   const dispatch = useDispatch();
   const patientsList = useSelector((state: RootState) => state.patients);
+  const sessions = useSelector(() => store.getState().sessions);
 
   const { id } = useParams();
-  const session = useSelector((state: RootState) => state.session);
+  const session = sessions.find((session) => session._id === id);
 
-  useEffect(() => {
-    dispatch(loadPatientssListThunk);
-    dispatch(loadOneSessionThunk(id as string));
-  }, [dispatch, id]);
-
-  const emptyDataForm = {
-    _id: session._id,
-    when: session.when.split(".")[0],
-    where: session.where,
-    doctor: session.doctor?._id,
-    patient: session.patient?._id,
+  const updatableDataForm = {
+    _id: session?._id as string,
+    when: session?.when.split(".")[0] as string,
+    where: session?.where as string,
+    doctor: session?.doctor?._id as any,
+    patient: session?.patient?._id as any,
   };
 
+  const [formData, setFormData] = useState(updatableDataForm);
+
+  console.log(formData);
   const handleForm = (event: any) => {
     setFormData({
       ...formData,
       [event.target.id]: event.target.value,
     });
   };
-  const [formData, setFormData] = useState(emptyDataForm);
 
-  const resetForm = () => {
-    setFormData(emptyDataForm);
-  };
+  useEffect(() => {
+    dispatch(loadPatientssListThunk);
+  }, [dispatch]);
 
   const formSubmit = (event: any) => {
     event.preventDefault();
@@ -90,8 +85,6 @@ const UpdateSessionForm = (): JSX.Element => {
     setTimeout(() => {
       goToSessionsPage();
     }, 2000);
-
-    resetForm();
   };
 
   const navigate = useNavigate();
