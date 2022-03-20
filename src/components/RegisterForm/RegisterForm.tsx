@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { registerThunk } from "../../redux/thunks/usersThunk";
 
 const FormContainer = styled.div`
   width: 300px;
@@ -57,6 +59,8 @@ const Form = styled.form`
 `;
 
 const RegisterForm = (): JSX.Element => {
+  const dispatch = useDispatch();
+
   const emptyDataForm = {
     name: "",
     lastname: "",
@@ -78,6 +82,7 @@ const RegisterForm = (): JSX.Element => {
 
   const formSubmit = (event: any) => {
     event.preventDefault();
+    dispatch(registerThunk(formData));
     setTimeout(() => {
       goToSessionsPage();
     }, 2000);
