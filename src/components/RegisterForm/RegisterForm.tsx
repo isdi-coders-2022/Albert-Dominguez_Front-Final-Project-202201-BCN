@@ -56,8 +56,10 @@ const Form = styled.form`
   }
 `;
 
-const LoginForm = (): JSX.Element => {
+const RegisterForm = (): JSX.Element => {
   const emptyDataForm = {
+    name: "",
+    lastname: "",
     username: "",
     password: "",
   };
@@ -91,6 +93,21 @@ const LoginForm = (): JSX.Element => {
   return (
     <FormContainer>
       <Form onSubmit={formSubmit} autoComplete={"off"}>
+        <label htmlFor="username">Name: </label>
+        <input
+          type={"text"}
+          id="name"
+          value={formData.name}
+          onChange={handleForm}
+        />
+        <label htmlFor="password">Last Name: </label>
+        <input
+          type={"lastname"}
+          id="lastname"
+          value={formData.lastname}
+          onChange={handleForm}
+        />
+
         <label htmlFor="username">Username: </label>
         <input
           type={"text"}
@@ -98,9 +115,9 @@ const LoginForm = (): JSX.Element => {
           value={formData.username}
           onChange={handleForm}
         />
-        <label htmlFor="password">Password: </label>
+        <label htmlFor="username">Password: </label>
         <input
-          type={"password"}
+          type={"text"}
           id="password"
           value={formData.password}
           onChange={handleForm}
@@ -112,14 +129,14 @@ const LoginForm = (): JSX.Element => {
             formData.username === "" || formData.password === "" ? true : false
           }
         >
-          LOGIN
+          REGISTER
         </button>
       </Form>
       <p>
-        If you want to create an account click <a href="/register">HERE</a>
+        Already have an account? click <a href="/login">HERE</a> to Log in
       </p>
     </FormContainer>
   );
 };
 
-export default LoginForm;
+export default RegisterForm;
