@@ -40,6 +40,10 @@ export const handlers = [
   rest.post(`${process.env.REACT_APP_API}sessions/new`, (req, res, ctx) =>
     res(ctx.status(200))
   ),
+  rest.patch(
+    `${process.env.REACT_APP_API}sessions/6229d6f84197f335af2c3ca9`,
+    (req, res, ctx) => res(ctx.status(200))
+  ),
   rest.get(`${process.env.REACT_APP_API}users`, (req, res, ctx) =>
     res(
       ctx.status(200),
