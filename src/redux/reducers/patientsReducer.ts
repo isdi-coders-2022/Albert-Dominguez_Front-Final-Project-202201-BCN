@@ -1,16 +1,22 @@
+import { AnyAction } from "redux";
 import { PatientShape } from "../../components/Patient/Patient";
 import { actionTypes } from "../actions/actionTypes";
 
 const patientsReducer = (
   patients: PatientShape[] = [],
-  action: { type: string; patients: PatientShape[] }
+  action: AnyAction = { type: "", patients }
 ) => {
   let newPatientsList;
 
-  if (action.type === actionTypes.loadPatientsList) {
-    newPatientsList = [...action.patients];
-  } else {
-    newPatientsList = [...patients];
+  switch (action.type) {
+    case actionTypes.loadPatientsList:
+      newPatientsList = [...action.patients];
+      break;
+    case actionTypes.register:
+      newPatientsList = [patients, ...action.patient];
+      break;
+    default:
+      newPatientsList = [...patients];
   }
 
   return newPatientsList;

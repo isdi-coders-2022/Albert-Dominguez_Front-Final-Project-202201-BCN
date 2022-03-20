@@ -7,7 +7,7 @@ describe("Given a patients reducer", () => {
       const patients: PatientShape[] = [];
       const patientsToLoad: PatientShape[] = [
         {
-          _id: "11",
+          _id: "12",
           name: "Petri",
           lastname: "Petroli",
           username: "pptroli",

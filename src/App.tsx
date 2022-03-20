@@ -7,6 +7,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import NewSessionPage from "./pages/NewSessionPage/NewSessionPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import PatientsPage from "./pages/PatientsPage/PatientsPage";
+import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import SessionDetailPage from "./pages/SessionDetailPage/SessionDetailPage";
 import SessionsPage from "./pages/SessionsPage/SessionsPage";
 import UpdateSessionPage from "./pages/UpdateSessionPage/UpdateSessionPage";
@@ -24,6 +25,7 @@ function App() {
           <Route path="/calendar" element={<CalendarPage />} />
           <Route path="/newsession" element={<NewSessionPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
           <Route path="/" element={<LoginPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>

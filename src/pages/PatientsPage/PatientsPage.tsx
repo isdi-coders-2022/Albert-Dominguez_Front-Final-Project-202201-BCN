@@ -22,7 +22,7 @@ const PatientsPage = () => {
 
   useEffect(() => {
     dispatch(loadPatientssListThunk);
-  }, [dispatch]);
+  }, [dispatch, patientsList?.length]);
 
   return (
     <Main>

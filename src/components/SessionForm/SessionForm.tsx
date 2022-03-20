@@ -107,6 +107,7 @@ const SessionForm = (): JSX.Element => {
           id="where"
           value={formData.where}
           onChange={handleForm}
+          autoComplete={"off"}
         />
         <label htmlFor="doctor">Doctor: </label>
         <select id="doctor" value={formData.doctor} onChange={handleForm}>
