@@ -67,7 +67,6 @@ const UpdateSessionForm = (): JSX.Element => {
 
   const [formData, setFormData] = useState(updatableDataForm);
 
-  console.log(formData);
   const handleForm = (event: any) => {
     setFormData({
       ...formData,
