@@ -93,14 +93,14 @@ const RegisterForm = (): JSX.Element => {
   return (
     <FormContainer>
       <Form onSubmit={formSubmit} autoComplete={"off"}>
-        <label htmlFor="username">Name: </label>
+        <label htmlFor="name">Name: </label>
         <input
           type={"text"}
           id="name"
           value={formData.name}
           onChange={handleForm}
         />
-        <label htmlFor="password">Last Name: </label>
+        <label htmlFor="lastname">Last Name: </label>
         <input
           type={"lastname"}
           id="lastname"
@@ -115,7 +115,7 @@ const RegisterForm = (): JSX.Element => {
           value={formData.username}
           onChange={handleForm}
         />
-        <label htmlFor="username">Password: </label>
+        <label htmlFor="password">Password: </label>
         <input
           type={"text"}
           id="password"

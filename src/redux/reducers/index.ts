@@ -8,6 +8,7 @@ const rootReducer = combineReducers({
   id: sessionsReducer,
   session: oneSessionReducer,
   patients: patientsReducer,
+  patient: patientsReducer,
 });
 
 export default rootReducer;

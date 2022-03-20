@@ -31,3 +31,8 @@ export const loadPatientsAction = (patients: PatientShape[]) => ({
   type: actionTypes.loadPatientsList,
   patients,
 });
+
+export const registerAction = (user: PatientShape) => ({
+  type: actionTypes.register,
+  user,
+});
