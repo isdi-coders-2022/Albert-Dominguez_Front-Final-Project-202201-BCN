@@ -23,6 +23,5 @@ export const registerThunk =
     if (response.ok) {
       const newUser = await response.json();
       dispatch(registerAction(newUser));
-      /*  toast.success("User registered correctly"); */
     }
   };

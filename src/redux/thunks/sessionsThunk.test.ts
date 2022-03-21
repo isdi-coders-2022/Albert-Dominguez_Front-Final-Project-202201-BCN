@@ -1,4 +1,8 @@
-import { deleteOneSessionThunk, loadSessionsListThunk } from "./sessionsThunk";
+import {
+  createNewSessionThunk,
+  deleteOneSessionThunk,
+  loadSessionsListThunk,
+} from "./sessionsThunk";
 
 describe("Given a loadSessionsList thunk function", () => {
   describe("When it is called", () => {
@@ -22,6 +26,29 @@ describe("Given a deleteOneSession thunk", () => {
 
       const deleteThunk = deleteOneSessionThunk(id);
       await deleteThunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalledWith(expectedAction);
+    });
+  });
+});
+
+describe("Given a createNewSession thunk", () => {
+  describe("When it's called with an existent id", () => {
+    test("Then it should call dispatch", async () => {
+      const session = {
+        when: "1312-01-12T00:14:44.000Z",
+        where: "Can Baró",
+        patient: "6230586642f13caa9b0c2252",
+        doctor: "6229d8254197f335af2c3cad",
+      };
+      const expectedAction = {
+        type: "create-new-session",
+        session: session,
+      };
+      const dispatch = jest.fn();
+
+      const createThunk = createNewSessionThunk(session);
+      await createThunk(dispatch);
 
       expect(dispatch).toHaveBeenCalledWith(expectedAction);
     });

@@ -38,7 +38,7 @@ export const handlers = [
     (req, res, ctx) => res(ctx.status(200))
   ),
   rest.post(`${process.env.REACT_APP_API}sessions/new`, (req, res, ctx) =>
-    res(ctx.status(200))
+    res(ctx.status(200), ctx.json(req.body))
   ),
   rest.patch(
     `${process.env.REACT_APP_API}sessions/6229d6f84197f335af2c3ca9`,
@@ -70,5 +70,8 @@ export const handlers = [
         },
       ])
     )
+  ),
+  rest.post(`${process.env.REACT_APP_API}users/new`, (req, res, ctx) =>
+    res(ctx.status(200), ctx.json(req.body))
   ),
 ];
