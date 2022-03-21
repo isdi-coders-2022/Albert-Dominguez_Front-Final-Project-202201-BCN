@@ -8,7 +8,7 @@ import {
   loadSessionsAction,
   updateSessionAction,
 } from "../actions/actionsCreator";
-const token = localStorage.get("UserToken");
+const token = localStorage.getItem("UserToken");
 
 export const loadSessionsListThunk = async (
   dispatch: ThunkDispatch<void, unknown, AnyAction>
