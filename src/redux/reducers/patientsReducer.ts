@@ -15,6 +15,7 @@ const patientsReducer = (
     case actionTypes.register:
       newPatientsList = [patients, ...action.patient];
       break;
+
     default:
       newPatientsList = [...patients];
   }

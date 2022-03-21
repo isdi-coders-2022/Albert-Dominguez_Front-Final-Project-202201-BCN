@@ -8,18 +8,29 @@ import {
   loadSessionsAction,
   updateSessionAction,
 } from "../actions/actionsCreator";
+const token = localStorage.get("UserToken");
 
 export const loadSessionsListThunk = async (
   dispatch: ThunkDispatch<void, unknown, AnyAction>
 ) => {
-  const response = await fetch(`${process.env.REACT_APP_API}sessions/`);
+  const response = await fetch(`${process.env.REACT_APP_API}sessions/`, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
   const sessionsListResponse = await response.json();
   dispatch(loadSessionsAction(sessionsListResponse));
 };
 
 export const loadOneSessionThunk =
   (id: string) => async (dispatch: ThunkDispatch<void, unknown, AnyAction>) => {
-    const response = await fetch(`${process.env.REACT_APP_API}sessions/${id}`);
+    const response = await fetch(`${process.env.REACT_APP_API}sessions/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
     const oneSession = await response.json();
     dispatch(loadOneSessionAction(oneSession));
   };
@@ -28,6 +39,10 @@ export const deleteOneSessionThunk =
   (id: string) => async (dispatch: ThunkDispatch<void, unknown, AnyAction>) => {
     const response = await fetch(`${process.env.REACT_APP_API}sessions/${id}`, {
       method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
     });
     if (response.ok) {
       dispatch(deleteOneSessionAction(id));
@@ -41,6 +56,7 @@ export const createNewSessionThunk =
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(session),
     });
@@ -59,6 +75,7 @@ export const updateSessionThunk =
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(session),
       }

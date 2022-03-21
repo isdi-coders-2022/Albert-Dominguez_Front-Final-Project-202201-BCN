@@ -1,6 +1,16 @@
+import jwtDecode from "jwt-decode";
 import { AnyAction } from "redux";
 import { ThunkDispatch } from "redux-thunk";
-import { loadPatientsAction, registerAction } from "../actions/actionsCreator";
+import {
+  loadPatientsAction,
+  loginAction,
+  registerAction,
+} from "../actions/actionsCreator";
+
+interface MyToken {
+  id: string;
+  username: string;
+}
 
 export const loadPatientssListThunk = async (
   dispatch: ThunkDispatch<void, unknown, AnyAction>
@@ -23,5 +33,23 @@ export const registerThunk =
     if (response.ok) {
       const newUser = await response.json();
       dispatch(registerAction(newUser));
+    }
+  };
+
+export const loginThunk =
+  (user: {}) => async (dispatch: ThunkDispatch<void, unknown, AnyAction>) => {
+    const response = await fetch(`${process.env.REACT_APP_API}users/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    });
+
+    if (response.ok) {
+      const token = await response.json();
+      const { id, username } = await jwtDecode<MyToken>(token.token);
+      localStorage.setItem("UserToken", token.token);
+      dispatch(loginAction({ id, username, token: token.token }));
     }
   };
