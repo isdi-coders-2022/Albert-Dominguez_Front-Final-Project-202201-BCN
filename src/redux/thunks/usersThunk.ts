@@ -7,7 +7,7 @@ import {
   registerAction,
 } from "../actions/actionsCreator";
 
-const token = localStorage.get("UserToken");
+const token = localStorage.getItem("UserToken");
 interface MyToken {
   id: string;
   username: string;
