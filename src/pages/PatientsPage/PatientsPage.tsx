@@ -20,6 +20,7 @@ const PatientsPage = () => {
   const dispatch = useDispatch();
   const patientsList = useSelector((state: RootState) => state.patients);
 
+  const filteredPatientsList = patientsList.filter((patient) => !patient.admin);
   useEffect(() => {
     dispatch(loadPatientssListThunk);
   }, [dispatch, patientsList?.length]);
@@ -27,7 +28,7 @@ const PatientsPage = () => {
   return (
     <Main>
       <h2>MY PATIENTS</h2>
-      <PatientsList patientsArray={patientsList} />
+      <PatientsList patientsArray={filteredPatientsList} />
     </Main>
   );
 };

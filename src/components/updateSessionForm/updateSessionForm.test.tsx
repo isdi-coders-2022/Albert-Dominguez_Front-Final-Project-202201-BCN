@@ -23,7 +23,7 @@ describe("Given a updateSessionForm component", () => {
       expect(button).toBeInTheDocument();
       expect(text).toBeInTheDocument();
       expect(combox).toBeInTheDocument();
-      expect(option).toHaveLength(4);
+      expect(option).toHaveLength(2);
     });
   });
 });

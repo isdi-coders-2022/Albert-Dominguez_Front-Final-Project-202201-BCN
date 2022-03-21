@@ -2,8 +2,12 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
-import { RootState, store } from "../../redux/store";
-import { updateSessionThunk } from "../../redux/thunks/sessionsThunk";
+
+import { RootState } from "../../redux/store";
+import {
+  loadOneSessionThunk,
+  updateSessionThunk,
+} from "../../redux/thunks/sessionsThunk";
 import { loadPatientssListThunk } from "../../redux/thunks/usersThunk";
 
 const FormContainer = styled.div`
@@ -52,10 +56,8 @@ const Form = styled.form`
 const UpdateSessionForm = (): JSX.Element => {
   const dispatch = useDispatch();
   const patientsList = useSelector((state: RootState) => state.patients);
-  const sessions = useSelector(() => store.getState().sessions);
-
+  const session = useSelector((state: RootState) => state.session);
   const { id } = useParams();
-  const session = sessions.find((session) => session._id === id);
 
   const updatableDataForm = {
     _id: session?._id as string,
@@ -67,12 +69,31 @@ const UpdateSessionForm = (): JSX.Element => {
 
   const [formData, setFormData] = useState(updatableDataForm);
 
+  useEffect(() => {
+    setFormData({
+      _id: session?._id as string,
+      when: session?.when.split(".")[0] as string,
+      where: session?.where as string,
+      doctor: session?.doctor?._id as any,
+      patient: session?.patient?._id as any,
+    });
+  }, [
+    session?._id,
+    session?.doctor?._id,
+    session?.patient?._id,
+    session?.when,
+    session?.where,
+  ]);
+
   const handleForm = (event: any) => {
     setFormData({
       ...formData,
       [event.target.id]: event.target.value,
     });
   };
+  useEffect(() => {
+    dispatch(loadOneSessionThunk(id as string));
+  }, [dispatch, id]);
 
   useEffect(() => {
     dispatch(loadPatientssListThunk);
@@ -90,6 +111,8 @@ const UpdateSessionForm = (): JSX.Element => {
   const goToSessionsPage = () => {
     navigate("/sessions");
   };
+  let filteredDoctorsList = patientsList.filter((patient) => patient.admin);
+  let filteredPatientsList = patientsList.filter((patient) => !patient.admin);
 
   return (
     <FormContainer>
@@ -110,7 +133,8 @@ const UpdateSessionForm = (): JSX.Element => {
         />
         <label htmlFor="doctor">Doctor: </label>
         <select id="doctor" value={formData.doctor} onChange={handleForm}>
-          {patientsList.map((user) => (
+          <option>Choose a doctor</option>
+          {filteredDoctorsList.map((user) => (
             <option key={user._id} value={user._id}>
               {user.name}
             </option>
@@ -118,7 +142,8 @@ const UpdateSessionForm = (): JSX.Element => {
         </select>
         <label htmlFor="patient">Patient: </label>
         <select id="patient" value={formData.patient} onChange={handleForm}>
-          {patientsList.map((user) => (
+          <option>Choose a patient</option>
+          {filteredPatientsList.map((user) => (
             <option key={user._id} value={user._id}>
               {user.name}
             </option>
