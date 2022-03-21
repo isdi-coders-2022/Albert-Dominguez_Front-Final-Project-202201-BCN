@@ -7,6 +7,7 @@ import {
   registerAction,
 } from "../actions/actionsCreator";
 
+const token = localStorage.get("UserToken");
 interface MyToken {
   id: string;
   username: string;
@@ -15,7 +16,12 @@ interface MyToken {
 export const loadPatientssListThunk = async (
   dispatch: ThunkDispatch<void, unknown, AnyAction>
 ) => {
-  const response = await fetch(`${process.env.REACT_APP_API}users/`);
+  const response = await fetch(`${process.env.REACT_APP_API}users/`, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
   const patientsListResponse = await response.json();
   dispatch(loadPatientsAction(patientsListResponse));
 };
