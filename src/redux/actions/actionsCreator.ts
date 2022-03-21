@@ -36,3 +36,8 @@ export const registerAction = (user: PatientShape) => ({
   type: actionTypes.register,
   user,
 });
+
+export const loginAction = (user: any) => ({
+  type: actionTypes.login,
+  user,
+});

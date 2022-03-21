@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { loginThunk } from "../../redux/thunks/usersThunk";
 
 const FormContainer = styled.div`
   width: 300px;
@@ -57,6 +59,8 @@ const Form = styled.form`
 `;
 
 const LoginForm = (): JSX.Element => {
+  const dispatch = useDispatch();
+
   const emptyDataForm = {
     username: "",
     password: "",
@@ -76,6 +80,7 @@ const LoginForm = (): JSX.Element => {
 
   const formSubmit = (event: any) => {
     event.preventDefault();
+    dispatch(loginThunk(formData));
     setTimeout(() => {
       goToSessionsPage();
     }, 2000);

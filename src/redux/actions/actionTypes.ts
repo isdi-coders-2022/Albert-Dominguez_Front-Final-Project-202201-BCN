@@ -6,4 +6,5 @@ export const actionTypes = {
   updateSession: "update-session",
   loadPatientsList: "load-patients-list",
   register: "register",
+  login: "login",
 };
