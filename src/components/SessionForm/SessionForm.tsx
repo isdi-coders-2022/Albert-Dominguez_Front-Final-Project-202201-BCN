@@ -90,7 +90,8 @@ const SessionForm = (): JSX.Element => {
   const goToSessionsPage = () => {
     navigate("/sessions");
   };
-
+  let filteredDoctorsList = patientsList.filter((patient) => patient.admin);
+  let filteredPatientsList = patientsList.filter((patient) => !patient.admin);
   return (
     <FormContainer>
       <Form onSubmit={formSubmit}>
@@ -111,7 +112,8 @@ const SessionForm = (): JSX.Element => {
         />
         <label htmlFor="doctor">Doctor: </label>
         <select id="doctor" value={formData.doctor} onChange={handleForm}>
-          {patientsList.map((user) => (
+          <option>Choose a doctor</option>
+          {filteredDoctorsList.map((user) => (
             <option key={user._id} value={user._id}>
               {user.name}
             </option>
@@ -119,7 +121,8 @@ const SessionForm = (): JSX.Element => {
         </select>
         <label htmlFor="patient">Patient: </label>
         <select id="patient" value={formData.patient} onChange={handleForm}>
-          {patientsList.map((user) => (
+          <option>Choose a patient</option>
+          {filteredPatientsList.map((user) => (
             <option key={user._id} value={user._id}>
               {user.name}
             </option>
