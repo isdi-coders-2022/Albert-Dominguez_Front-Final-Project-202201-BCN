@@ -51,6 +51,7 @@ export const loginThunk =
       },
       body: JSON.stringify(user),
     });
+    console.log(user);
 
     if (response.ok) {
       const token = await response.json();

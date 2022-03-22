@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
 import Footer from "./Footer";
+import TestRenderer from "react-test-renderer";
 
 describe("Given a Footer component", () => {
   describe("When it's instantiated", () => {
@@ -34,5 +35,14 @@ describe("Given a Footer component", () => {
 
       expect(menu).not.toBeVisible();
     });
+  });
+  test("then it should match the snapshot", () => {
+    const app = TestRenderer.create(
+      <MemoryRouter>
+        <Footer />
+      </MemoryRouter>
+    ).toJSON();
+
+    expect(app).toMatchSnapshot();
   });
 });

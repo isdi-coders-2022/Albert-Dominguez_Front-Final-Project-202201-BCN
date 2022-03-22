@@ -84,9 +84,3 @@ export const updateSessionThunk =
       dispatch(updateSessionAction(session));
     }
   };
-
-export const loadingThunk = (
-  dispatch: ThunkDispatch<void, unknown, AnyAction>
-) => {
-  dispatch(loadingThunk);
-};
