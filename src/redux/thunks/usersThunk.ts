@@ -56,7 +56,6 @@ export const loginThunk =
       const token = await response.json();
       const { id, username } = jwtDecode<MyToken>(token.token);
       localStorage.setItem("UserToken", token.token);
-      console.log(token.token);
       dispatch(loginAction({ id, username, token: token.token }));
     }
   };

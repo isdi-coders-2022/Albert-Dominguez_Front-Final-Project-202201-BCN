@@ -17,7 +17,7 @@ const sessionsReducer = (
       break;
 
     case actionTypes.createNewSession:
-      newSessionsList = [sessions, ...action.session];
+      newSessionsList = [...sessions, action.session];
       break;
 
     default:
