@@ -36,7 +36,7 @@ describe("Given a Session component", () => {
 
       render(
         <MemoryRouter>
-          <SessionDetail session={firstSession} actionOnClick={mockFunction} />
+          <SessionDetail session={firstSession} />
         </MemoryRouter>
       );
 
@@ -68,7 +68,7 @@ describe("Given a Session component", () => {
 
       render(
         <MemoryRouter>
-          <SessionDetail session={firstSession} actionOnClick={mockFunction} />
+          <SessionDetail session={firstSession} />
         </MemoryRouter>
       );
 
