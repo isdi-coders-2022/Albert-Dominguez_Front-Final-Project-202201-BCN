@@ -7,7 +7,7 @@ import {
   registerAction,
 } from "../actions/actionsCreator";
 
-const token = localStorage.getItem("UserToken");
+const myToken = localStorage.getItem("UserToken");
 interface MyToken {
   id: string;
   username: string;
@@ -19,7 +19,7 @@ export const loadPatientssListThunk = async (
   const response = await fetch(`${process.env.REACT_APP_API}users/`, {
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${myToken}`,
     },
   });
   const patientsListResponse = await response.json();
@@ -54,8 +54,9 @@ export const loginThunk =
 
     if (response.ok) {
       const token = await response.json();
-      const { id, username } = await jwtDecode<MyToken>(token.token);
+      const { id, username } = jwtDecode<MyToken>(token.token);
       localStorage.setItem("UserToken", token.token);
+      console.log(token.token);
       dispatch(loginAction({ id, username, token: token.token }));
     }
   };

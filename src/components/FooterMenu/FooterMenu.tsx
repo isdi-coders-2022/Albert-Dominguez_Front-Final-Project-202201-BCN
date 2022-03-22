@@ -67,11 +67,15 @@ const FooterMenu = ({ isActive, actionOnClick }: MenuProps) => {
     <Container
       onClick={actionOnClick}
       className={`menu-container${isActive ? " active" : " unactive"}`}
+      data-testid="onclick"
+      title="onclick"
     >
-      <List>
+      <List title="menuList">
         <li>
           <Div>
-            <Link to={"/calendar"}>Calendar</Link>
+            <Link to={"/calendar"} title="calendar">
+              Calendar
+            </Link>
           </Div>
         </li>
         <li>
