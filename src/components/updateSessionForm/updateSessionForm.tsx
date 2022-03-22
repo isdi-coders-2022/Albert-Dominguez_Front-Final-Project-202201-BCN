@@ -74,13 +74,13 @@ const UpdateSessionForm = (): JSX.Element => {
       _id: session?._id as string,
       when: session?.when.split(".")[0] as string,
       where: session?.where as string,
-      doctor: session?.doctor?._id as any,
-      patient: session?.patient?._id as any,
+      doctor: session.doctor._id as any,
+      patient: session.patient._id as any,
     });
   }, [
     session?._id,
-    session?.doctor?._id,
-    session?.patient?._id,
+    session.doctor._id,
+    session.patient._id,
     session?.when,
     session?.where,
   ]);

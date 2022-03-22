@@ -62,9 +62,10 @@ export const handlers = [
           _id: "11",
           name: "Petrus",
           lastname: "Petroleus",
-          username: "pptroli",
+          username: "123456",
           progress: "Not progressing",
-          password: "12345",
+          password:
+            "$2b$10$2rMqPvHpSA7OyeS9LdvejueLOTRFaAXoEvn73h70pQffd7UCVXbcu",
           admin: true,
           sessions: ["1"],
         },

@@ -6,7 +6,6 @@ import { DateTime, Settings } from "luxon";
 Settings.defaultLocale = "ca";
 interface SessionProps {
   session: SessionShape;
-  actionOnClick: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
 const SessionContainer = styled.div`
@@ -48,10 +47,7 @@ const MeetContainer = styled.div`
   }
 `;
 
-const SessionDetail = ({
-  session,
-  actionOnClick,
-}: SessionProps): JSX.Element => {
+const SessionDetail = ({ session }: SessionProps): JSX.Element => {
   return session.patient ? (
     <SessionContainer>
       <MeetContainer>
@@ -60,7 +56,7 @@ const SessionDetail = ({
         <p>{`Therapist: ${session.doctor?.name}`}</p>
         <p>{`Patient: ${session.patient.name}`}</p>
       </MeetContainer>{" "}
-      <Container onClick={actionOnClick}>
+      <Container>
         <h3>MESSAGE BOARD</h3>
       </Container>
       <StyledLink to={"/sessions"}>ASK FOR CANCELLATION</StyledLink>
@@ -73,7 +69,7 @@ const SessionDetail = ({
         <p>{`Therapist: ${session.doctor?.name}`}</p>
         <p>{`Patient: No longer here`}</p>
       </MeetContainer>
-      <Container onClick={actionOnClick}>
+      <Container>
         <h3>MESSAGE BOARD</h3>
       </Container>
       <StyledLink to={"/sessions"}>ASK FOR CANCELLATION</StyledLink>

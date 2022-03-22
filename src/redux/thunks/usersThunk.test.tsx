@@ -1,4 +1,8 @@
-import { loadPatientssListThunk, registerThunk } from "./usersThunk";
+import {
+  loadPatientssListThunk,
+  loginThunk,
+  registerThunk,
+} from "./usersThunk";
 
 describe("Given a loadSessionsList thunk function", () => {
   describe("When it is called", () => {
@@ -29,6 +33,24 @@ describe("Given a register thunk", () => {
       await regThunk(dispatch);
 
       expect(dispatch).toHaveBeenCalledWith(expectedAction);
+    });
+  });
+});
+
+describe("Given a login thunk", () => {
+  describe("When it's called with an existent id", () => {
+    test("Then it should call dispatch with de resgisterAction as parameter", async () => {
+      const userObject = {
+        username: "123456",
+        password: "123456",
+      };
+
+      const dispatch = jest.fn();
+
+      const logThunk = loginThunk(userObject);
+      await logThunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalled();
     });
   });
 });

@@ -30,7 +30,7 @@ const SessionDetailPage = () => {
   return sessionDetail._id ? (
     <Main>
       <h2>MY SESSIONS</h2>
-      <SessionDetail session={sessionDetail} actionOnClick={() => {}} />
+      <SessionDetail session={sessionDetail} />
     </Main>
   ) : (
     <NotFoundPage />
