@@ -19,6 +19,7 @@ export const loadSessionsListThunk = async (
       Authorization: `Bearer ${token}`,
     },
   });
+
   const sessionsListResponse = await response.json();
   dispatch(loadSessionsAction(sessionsListResponse));
 };
@@ -44,6 +45,7 @@ export const deleteOneSessionThunk =
         Authorization: `Bearer ${token}`,
       },
     });
+
     if (response.ok) {
       dispatch(deleteOneSessionAction(id));
     }

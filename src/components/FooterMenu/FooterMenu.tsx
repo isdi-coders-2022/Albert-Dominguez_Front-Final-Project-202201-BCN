@@ -1,6 +1,7 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { logoutUserAction } from "../../redux/actions/actionsCreator";
 import { RootState } from "../../redux/store";
 
 type MenuProps = {
@@ -66,6 +67,13 @@ const Div = styled.div`
 
 const FooterMenu = ({ isActive, actionOnClick }: MenuProps) => {
   const user: any = useSelector((state: RootState) => state.patient);
+
+  const dispatch = useDispatch();
+
+  const logOut = () => {
+    localStorage.setItem("UserToken", "");
+    dispatch(logoutUserAction());
+  };
   return (
     <Container
       onClick={actionOnClick}
@@ -109,7 +117,7 @@ const FooterMenu = ({ isActive, actionOnClick }: MenuProps) => {
         <li>
           <Div>
             {user.loggedIn ? (
-              <Link onClick={() => localStorage.clear()} to={"/login"}>
+              <Link onClick={logOut} to={"/login"}>
                 Log Out
               </Link>
             ) : (
