@@ -100,18 +100,22 @@ const FooterMenu = ({ isActive, actionOnClick }: MenuProps) => {
             {user.loggedIn ? (
               <Link to={"/newsession"}>Create Session</Link>
             ) : (
-              <Link to={"/register"}>Register</Link>
+              <Link to={"/register"} title={"register"}>
+                Register
+              </Link>
             )}
           </Div>
         </li>{" "}
         <li>
           <Div>
             {user.loggedIn ? (
-              <Link to={"/login"} onClick={() => localStorage.clear()}>
+              <Link onClick={() => localStorage.clear()} to={"/login"}>
                 Log Out
               </Link>
             ) : (
-              <Link to={"/login"}>Login</Link>
+              <Link to={"/login"} title={"login"}>
+                Login
+              </Link>
             )}
           </Div>
         </li>
