@@ -92,7 +92,7 @@ const RegisterForm = (): JSX.Element => {
 
   const navigate = useNavigate();
   const goToSessionsPage = () => {
-    navigate("/calendar");
+    navigate("/login");
   };
 
   return (

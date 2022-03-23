@@ -1,4 +1,5 @@
 import jwtDecode from "jwt-decode";
+import { toast } from "react-toastify";
 import { AnyAction } from "redux";
 import { ThunkDispatch } from "redux-thunk";
 import {
@@ -22,7 +23,11 @@ export const loadPatientssListThunk = async (
       Authorization: `Bearer ${myToken}`,
     },
   });
+  while (!response.ok) {
+    toast.loading("loading");
+  }
   const patientsListResponse = await response.json();
+
   dispatch(loadPatientsAction(patientsListResponse));
 };
 
@@ -39,6 +44,9 @@ export const registerThunk =
     if (response.ok) {
       const newUser = await response.json();
       dispatch(registerAction(newUser));
+      toast.success("User created!");
+    } else {
+      toast.warn("Something went wrong, try again later");
     }
   };
 
@@ -59,5 +67,8 @@ export const loginThunk =
       localStorage.setItem("UserToken", token.token);
       localStorage.userName = name;
       dispatch(loginAction({ id, name, token: token.token }));
+      toast.success(`Logged in as ${name}`);
+    } else {
+      toast.warn("User not found");
     }
   };

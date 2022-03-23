@@ -1,6 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import "react-toastify/dist/ReactToastify.css";
 import { useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import Footer from "./components/Footer/Footer";
 import Navigation from "./components/Navigation/Navigation";
 import CalendarPage from "./pages/CalendarPage/CalendarPage";
@@ -15,17 +17,18 @@ import UpdateSessionPage from "./pages/UpdateSessionPage/UpdateSessionPage";
 import { RootState } from "./redux/store";
 
 function App() {
-  const user: any = useSelector((state: RootState) => state.patient);
+  const user: any = useSelector((state: RootState) => state.userInfo);
+
+  const [logged, setLogged] = useState(user.loggedIn);
 
   useEffect(() => {
     const token = localStorage.getItem("UserToken");
-    if (token) {
-      user.loggedIn = true;
-    }
-  }, [user]);
+    token ? setLogged(user.loggedIn) : setLogged(!user.loggedIn);
+  }, [user.loggedIn]);
 
   return (
     <div className="App">
+      <ToastContainer />
       <Navigation />
       <Routes>
         <Route>
