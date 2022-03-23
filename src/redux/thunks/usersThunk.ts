@@ -10,7 +10,7 @@ import {
 const myToken = localStorage.getItem("UserToken");
 interface MyToken {
   id: string;
-  username: string;
+  name: string;
 }
 
 export const loadPatientssListThunk = async (
@@ -55,8 +55,10 @@ export const loginThunk =
 
     if (response.ok) {
       const token = await response.json();
-      const { id, username } = jwtDecode<MyToken>(token.token);
+      const { id, name } = jwtDecode<MyToken>(token.token);
+      console.log(jwtDecode<MyToken>(token.token));
       localStorage.setItem("UserToken", token.token);
-      dispatch(loginAction({ id, username, token: token.token }));
+      localStorage.userName = name;
+      dispatch(loginAction({ id, name, token: token.token }));
     }
   };

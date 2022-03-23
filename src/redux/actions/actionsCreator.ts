@@ -41,3 +41,12 @@ export const loginAction = (user: any) => ({
   type: actionTypes.login,
   user,
 });
+
+export const loginUserAction = (userInfo: any) => ({
+  type: actionTypes.login,
+  userInfo,
+});
+
+export const logoutUserAction = () => ({
+  type: actionTypes.logout,
+});

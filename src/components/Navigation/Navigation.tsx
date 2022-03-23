@@ -18,6 +18,7 @@ const Title = styled.h1`
   margin: 20px;
   width: 130px;
   font-size: large;
+  margin-bottom: 0%;
 `;
 
 const Anchor = styled(Link)`
@@ -41,11 +42,29 @@ const List = styled.ul`
     font-size: 10px;
   }
 `;
+const TitleContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  p {
+    margin: 3px;
+    padding: 0;
+    font-size: 10px;
+  }
+`;
 
 const Navigation = (): JSX.Element => {
   return (
     <Header>
-      <Title>NICEST SHRINK</Title>
+      <TitleContainer>
+        <Title>NICEST SHRINK</Title>
+        {localStorage.userName ? (
+          <p>Logged In as {localStorage.userName}</p>
+        ) : (
+          <></>
+        )}
+      </TitleContainer>
+
       <nav>
         <List>
           <li>
