@@ -18,9 +18,10 @@ const Title = styled.h1`
   margin: 20px;
   width: 130px;
   font-size: large;
+  margin-bottom: 0%;
 `;
 
-const Anchor = styled(Link)`
+const Links = styled(Link)`
   color: inherit;
   text-decoration: inherit;
   font-weight: inherit;
@@ -41,28 +42,71 @@ const List = styled.ul`
     font-size: 10px;
   }
 `;
+const TitleContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  p {
+    margin: 3px;
+    padding: 0;
+    font-size: 10px;
+  }
+`;
 
 const Navigation = (): JSX.Element => {
   return (
     <Header>
-      <Title>NICEST SHRINK</Title>
+      <TitleContainer>
+        <Title>NICEST SHRINK</Title>
+        {localStorage.userName ? (
+          <p>Logged In as {localStorage.userName}</p>
+        ) : (
+          <></>
+        )}
+      </TitleContainer>
+
       <nav>
         <List>
           <li>
-            <Anchor to="/calendar">Calendar</Anchor>
-          </li>
-          <li>
-            <Anchor to="/sessions">Sessions</Anchor>
-          </li>
-          <li>
-            <Anchor to="/patients">Patients</Anchor>
-          </li>
-          <li>
-            <Anchor to="/login">LogIn</Anchor>
+            {localStorage.userName ? (
+              <Links to="/calendar">Calendar</Links>
+            ) : (
+              ""
+            )}
           </li>
 
           <li>
-            <Anchor to="/newsession">New Session</Anchor>
+            {localStorage.userName ? (
+              <Links to="/sessions">Sessions</Links>
+            ) : (
+              ""
+            )}
+          </li>
+
+          <li>
+            {localStorage.userName ? (
+              <Links to={"/patients"}>Patients</Links>
+            ) : (
+              ""
+            )}
+          </li>
+
+          <li>
+            {localStorage.userName ? (
+              <Links to={"/newsession"}>Create Session</Links>
+            ) : (
+              <Links to={"/register"}>Register</Links>
+            )}
+          </li>
+
+          <li>
+            {localStorage.userName ? (
+              <Links onClick={() => localStorage.clear()} to={"/login"}>
+                Log Out
+              </Links>
+            ) : (
+              <Links to={"/login"}>Login</Links>
+            )}
           </li>
         </List>
       </nav>

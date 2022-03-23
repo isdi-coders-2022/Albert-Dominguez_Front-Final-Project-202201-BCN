@@ -79,8 +79,8 @@ const UpdateSessionForm = (): JSX.Element => {
     });
   }, [
     session?._id,
-    session.doctor._id,
-    session.patient._id,
+    session?.doctor._id,
+    session?.patient._id,
     session?.when,
     session?.where,
   ]);

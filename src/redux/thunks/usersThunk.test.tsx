@@ -4,7 +4,7 @@ import {
   registerThunk,
 } from "./usersThunk";
 
-describe("Given a loadSessionsList thunk function", () => {
+describe("Given a loadPatientsList thunk function", () => {
   describe("When it is called", () => {
     test("Then it should dispatch a function", async () => {
       const dispatch = jest.fn();

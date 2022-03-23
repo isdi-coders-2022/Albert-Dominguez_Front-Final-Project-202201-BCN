@@ -2,6 +2,7 @@ import {
   createNewSessionThunk,
   deleteOneSessionThunk,
   loadSessionsListThunk,
+  updateSessionThunk,
 } from "./sessionsThunk";
 
 describe("Given a loadSessionsList thunk function", () => {
@@ -49,6 +50,48 @@ describe("Given a createNewSession thunk", () => {
 
       const createThunk = createNewSessionThunk(session);
       await createThunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalledWith(expectedAction);
+    });
+  });
+});
+describe("Given a updateSession thunk", () => {
+  describe("When it's called with an existent id", () => {
+    test("Then it should call dispatch", async () => {
+      const updatedSession = {
+        _id: "6229d6f84197f335af2c3ca9",
+        when: "Gomorra",
+        where: "Where eagles dareth",
+        patient: {
+          _id: "234",
+          name: "Teodoro",
+          lastname: "Maloso",
+          username: "Tmaloso",
+          password: "12345",
+          admin: false,
+          sessions: [],
+          progress: "",
+        },
+        doctor: {
+          _id: "234",
+          name: "Doctor",
+          lastname: "Strange",
+          username: "DrStrange",
+          password: "12345",
+          admin: false,
+          sessions: [],
+          progress: "",
+        },
+      };
+
+      const expectedAction = {
+        type: "update-session",
+        session: updatedSession,
+      };
+      const dispatch = jest.fn();
+
+      const updateThunk = updateSessionThunk(updatedSession);
+      await updateThunk(dispatch);
 
       expect(dispatch).toHaveBeenCalledWith(expectedAction);
     });

@@ -7,4 +7,5 @@ export const actionTypes = {
   loadPatientsList: "load-patients-list",
   register: "register",
   login: "login",
+  logout: "logout",
 };

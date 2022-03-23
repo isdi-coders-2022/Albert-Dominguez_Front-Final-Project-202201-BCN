@@ -104,5 +104,54 @@ describe("Given a patients reducer", () => {
         expect(newState).toEqual(patients);
       });
     });
+    describe("When it's called with a register action", () => {
+      test("Then it should return a new state with the new state", () => {
+        const patients: PatientShape[] = [];
+
+        const patient = {
+          _id: "11",
+          name: "Petrus",
+          lastname: "Petroleus",
+          username: "pptroli",
+          progress: "Not progressing",
+          password: "12345",
+          admin: true,
+          sessions: {
+            _id: "1",
+            when: "Tomorrow",
+            where: "Where eagles dare",
+            patient: {
+              _id: "234",
+              name: "Teodoro",
+              lastname: "Maloso",
+              username: "Tmaloso",
+              password: "12345",
+              admin: false,
+              sessions: [],
+              progress: "",
+            },
+            doctor: {
+              _id: "234",
+              name: "Doctor",
+              lastname: "Strange",
+              username: "DrStrange",
+              password: "12345",
+              admin: false,
+              sessions: [],
+              progress: "",
+            },
+          },
+        };
+
+        const action = {
+          type: "register",
+          patient: patient,
+        };
+
+        const newState = patientsReducer(patients, action);
+
+        expect(newState).toHaveLength(1);
+      });
+    });
   });
 });

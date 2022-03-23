@@ -32,7 +32,6 @@ describe("Given a Session component", () => {
           progress: "",
         },
       };
-      const mockFunction = jest.fn();
 
       render(
         <MemoryRouter>
@@ -64,7 +63,6 @@ describe("Given a Session component", () => {
           progress: "",
         },
       };
-      const mockFunction = jest.fn();
 
       render(
         <MemoryRouter>

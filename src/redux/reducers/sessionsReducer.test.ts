@@ -67,6 +67,10 @@ describe("Given a sessions reducer", () => {
       expect(newState).toEqual(sessionsToLoad);
     });
 
+    describe("When it's called with a createSession action", () => {
+      test("Then it should return an array with a new session in", () => {});
+    });
+
     describe("When it's called with an nonexistent action", () => {
       test("Then it should return a new state with the current state (initial state)", () => {
         const sessions: SessionShape[] = [
@@ -122,14 +126,40 @@ describe("Given a sessions reducer", () => {
           },
         ];
 
+        const session: SessionShape = {
+          _id: "1bbb",
+          when: "Todaybb",
+          where: "Where eagles dare",
+          patient: {
+            _id: "234",
+            name: "Teodoro",
+            lastname: "Maloso",
+            username: "Tmaloso",
+            password: "12345",
+            admin: false,
+            sessions: [],
+            progress: "",
+          },
+          doctor: {
+            _id: "234",
+            name: "Doctor",
+            lastname: "Strange",
+            username: "DrStrange",
+            password: "12345",
+            admin: false,
+            sessions: [],
+            progress: "",
+          },
+        };
+
         const action = {
-          type: "none",
-          sessions: sessions,
+          type: "create-new-session",
+          session,
         };
 
         const newState = sessionsReducer(sessions, action);
 
-        expect(newState).toEqual(sessions);
+        expect(newState).toHaveLength(3);
       });
     });
   });
