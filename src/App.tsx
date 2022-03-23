@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import Navigation from "./components/Navigation/Navigation";
@@ -11,8 +12,18 @@ import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import SessionDetailPage from "./pages/SessionDetailPage/SessionDetailPage";
 import SessionsPage from "./pages/SessionsPage/SessionsPage";
 import UpdateSessionPage from "./pages/UpdateSessionPage/UpdateSessionPage";
+import { RootState } from "./redux/store";
 
 function App() {
+  const user: any = useSelector((state: RootState) => state.patient);
+
+  useEffect(() => {
+    const token = localStorage.getItem("UserToken");
+    if (token) {
+      user.loggedIn = true;
+    }
+  }, [user]);
+
   return (
     <div className="App">
       <Navigation />

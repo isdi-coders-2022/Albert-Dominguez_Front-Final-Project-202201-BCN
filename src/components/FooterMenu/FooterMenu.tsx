@@ -1,5 +1,7 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { RootState } from "../../redux/store";
 
 type MenuProps = {
   isActive: any;
@@ -63,6 +65,7 @@ const Div = styled.div`
 `;
 
 const FooterMenu = ({ isActive, actionOnClick }: MenuProps) => {
+  const user: any = useSelector((state: RootState) => state.patient);
   return (
     <Container
       onClick={actionOnClick}
@@ -73,29 +76,43 @@ const FooterMenu = ({ isActive, actionOnClick }: MenuProps) => {
       <List title="menuList">
         <li>
           <Div>
-            <Link to={"/calendar"} title="calendar">
-              Calendar
-            </Link>
+            {user.loggedIn ? (
+              <Link to={"/calendar"} title="calendar">
+                Calendar
+              </Link>
+            ) : (
+              <></>
+            )}
           </Div>
         </li>
         <li>
           <Div>
-            <Link to={"/sessions"}>Sessions</Link>
+            {user.loggedIn ? <Link to={"/sessions"}>Sessions</Link> : ""}
           </Div>
         </li>
         <li>
           <Div>
-            <Link to={"/patients"}>Patients</Link>
+            {user.loggedIn ? <Link to={"/patients"}>Patients</Link> : ""}
           </Div>
         </li>
         <li>
           <Div>
-            <Link to={"/login"}>Login</Link>
+            {user.loggedIn ? (
+              <Link to={"/newsession"}>Create Session</Link>
+            ) : (
+              <Link to={"/register"}>Register</Link>
+            )}
           </Div>
-        </li>
+        </li>{" "}
         <li>
           <Div>
-            <Link to={"/newsession"}>Create Session</Link>
+            {user.loggedIn ? (
+              <Link to={"/login"} onClick={() => localStorage.clear()}>
+                Log Out
+              </Link>
+            ) : (
+              <Link to={"/login"}>Login</Link>
+            )}
           </Div>
         </li>
       </List>{" "}

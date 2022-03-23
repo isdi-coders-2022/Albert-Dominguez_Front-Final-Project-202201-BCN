@@ -1,5 +1,7 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { RootState } from "../../redux/store";
 
 const Header = styled.header`
   background-color: #f37370;
@@ -21,7 +23,7 @@ const Title = styled.h1`
   margin-bottom: 0%;
 `;
 
-const Anchor = styled(Link)`
+const Links = styled(Link)`
   color: inherit;
   text-decoration: inherit;
   font-weight: inherit;
@@ -54,6 +56,8 @@ const TitleContainer = styled.div`
 `;
 
 const Navigation = (): JSX.Element => {
+  const user: any = useSelector((state: RootState) => state.patient);
+
   return (
     <Header>
       <TitleContainer>
@@ -67,21 +71,32 @@ const Navigation = (): JSX.Element => {
 
       <nav>
         <List>
+          <li>{user.loggedIn ? <Links to="/calendar">Calendar</Links> : ""}</li>
+
+          <li>{user.loggedIn ? <Links to="/sessions">Sessions</Links> : ""}</li>
+
           <li>
-            <Anchor to="/calendar">Calendar</Anchor>
-          </li>
-          <li>
-            <Anchor to="/sessions">Sessions</Anchor>
-          </li>
-          <li>
-            <Anchor to="/patients">Patients</Anchor>
-          </li>
-          <li>
-            <Anchor to="/login">LogIn</Anchor>
+            {user.loggedIn ? <Links to={"/patients"}>Patients</Links> : ""}
           </li>
 
           <li>
-            <Anchor to="/newsession">New Session</Anchor>
+            {" "}
+            {user.loggedIn ? (
+              <Links to={"/newsession"}>Create Session</Links>
+            ) : (
+              <Links to={"/register"}>Register</Links>
+            )}
+          </li>
+
+          <li>
+            {" "}
+            {user.loggedIn ? (
+              <Links to={"/login"} onClick={() => localStorage.clear()}>
+                Log Out
+              </Links>
+            ) : (
+              <Links to={"/login"}>Login</Links>
+            )}
           </li>
         </List>
       </nav>
