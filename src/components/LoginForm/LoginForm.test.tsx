@@ -5,6 +5,12 @@ import { MemoryRouter } from "react-router-dom";
 import { store } from "../../redux/store";
 import LoginForm from "./LoginForm";
 
+let mockDispatch = jest.fn();
+jest.mock("react-redux", () => ({
+  ...jest.requireActual("react-redux"),
+  useDispatch: () => mockDispatch,
+}));
+
 describe("Given a LoginForm component", () => {
   describe("When it's instantiated", () => {
     test("Then it should render a form", async () => {
@@ -40,9 +46,12 @@ describe("Given a LoginForm component", () => {
 
         const button = screen.getByRole("button");
         fields.forEach((field) => userEvent.type(field, "1234"));
+        expect(button).not.toBeDisabled();
+        userEvent.click(button);
 
         expect(fields[0]).toBeInTheDocument();
-        expect(button).not.toBeDisabled();
+
+        expect(mockDispatch).toHaveBeenCalled();
       });
     });
   });
