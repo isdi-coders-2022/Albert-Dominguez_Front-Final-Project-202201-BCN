@@ -10,7 +10,7 @@ const rootReducer = combineReducers({
   session: oneSessionReducer,
   patients: patientsReducer,
   patient: patientsReducer,
-  userInfo: loginReducer,
+  loginData: loginReducer,
 });
 
 export default rootReducer;

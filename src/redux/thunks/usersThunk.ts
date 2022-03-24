@@ -1,9 +1,11 @@
 import jwtDecode from "jwt-decode";
+import { toast } from "react-toastify";
 import { AnyAction } from "redux";
 import { ThunkDispatch } from "redux-thunk";
 import {
   loadPatientsAction,
-  loginAction,
+  loginUserAction,
+  logoutUserAction,
   registerAction,
 } from "../actions/actionsCreator";
 
@@ -54,10 +56,18 @@ export const loginThunk =
 
     if (response.ok) {
       const token = await response.json();
-      const { id, name } = jwtDecode<MyToken>(token.token);
+      const { name } = jwtDecode<MyToken>(token.token);
 
       localStorage.setItem("UserToken", token.token);
       localStorage.userName = name;
-      dispatch(loginAction({ id, name, token: token.token }));
+      dispatch(loginUserAction({ loggedIn: true }));
+      toast.success("Logged in!");
     }
+  };
+
+export const logoutThunk =
+  () => async (dispatch: ThunkDispatch<void, unknown, AnyAction>) => {
+    localStorage.clear();
+    dispatch(logoutUserAction());
+    toast.success("Logged out");
   };

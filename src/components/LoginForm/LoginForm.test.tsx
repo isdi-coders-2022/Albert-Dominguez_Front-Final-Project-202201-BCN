@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { MemoryRouter } from "react-router-dom";
 import { store } from "../../redux/store";
@@ -20,6 +21,29 @@ describe("Given a LoginForm component", () => {
 
       expect(button).toBeInTheDocument();
       expect(text).toBeInTheDocument();
+    });
+    describe("When the user types in every input", () => {
+      test("Then the register button should be enabled", () => {
+        const expectedFields = [/username/i, /password/i];
+
+        render(
+          <MemoryRouter>
+            <Provider store={store}>
+              <LoginForm />
+            </Provider>
+          </MemoryRouter>
+        );
+
+        const fields = expectedFields.map((label) =>
+          screen.getByLabelText(label)
+        );
+
+        const button = screen.getByRole("button");
+        fields.forEach((field) => userEvent.type(field, "1234"));
+
+        expect(fields[0]).toBeInTheDocument();
+        expect(button).not.toBeDisabled();
+      });
     });
   });
 });

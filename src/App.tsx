@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { ToastContainer } from "react-toastify";
+import { useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import Navigation from "./components/Navigation/Navigation";
@@ -12,21 +13,31 @@ import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import SessionDetailPage from "./pages/SessionDetailPage/SessionDetailPage";
 import SessionsPage from "./pages/SessionsPage/SessionsPage";
 import UpdateSessionPage from "./pages/UpdateSessionPage/UpdateSessionPage";
-import { RootState } from "./redux/store";
+
+import "react-toastify/dist/ReactToastify.css";
+import { loginUserAction } from "./redux/actions/actionsCreator";
+import { logoutThunk } from "./redux/thunks/usersThunk";
 
 function App() {
-  const user: any = useSelector((state: RootState) => state.patient);
+  const dispatch = useDispatch();
+  const token = localStorage.getItem("UserToken");
 
   useEffect(() => {
-    const token = localStorage.getItem("UserToken");
-    if (token) {
-      user.loggedIn = true;
-    }
-  }, [user]);
+    token ? dispatch(loginUserAction(true)) : dispatch(logoutThunk);
+  }, [dispatch, token]);
 
   return (
     <div className="App">
       <Navigation />
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        draggable
+      />
       <Routes>
         <Route>
           <Route path="/updatesession/:id" element={<UpdateSessionPage />} />

@@ -26,14 +26,14 @@ const HacQuatre = styled.h4`
   font-size: 12px;
   font-weight: lighter;
   margin: 0;
-  @media (min-width: 400px) {
+  @media (min-width: 450px) {
     display: none;
   }
 `;
 const Image = styled.img`
   height: 80%;
   filter: drop-shadow(0px 0px 3px black);
-  @media (min-width: 400px) {
+  @media (min-width: 450px) {
     height: 60%;
   }
 `;

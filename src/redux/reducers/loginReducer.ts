@@ -1,27 +1,22 @@
 import { AnyAction } from "redux";
 import { actionTypes } from "../actions/actionTypes";
 
-const initialLoginData = {
-  name: "",
-  username: "",
-  id: "",
-  loggedIn: false,
-};
-
 const loginReducer = (userInfo: any, action: AnyAction = { type: "" }) => {
   let loginData;
 
   switch (action.type) {
     case actionTypes.login:
-      loginData = { ...action.userInfo };
+      loginData = { loggedIn: true };
       break;
 
     case actionTypes.logout:
-      loginData = { ...initialLoginData };
+      loginData = { loggedIn: false };
       break;
 
     default:
-      loginData = { ...userInfo };
+      localStorage.getItem("UserToken")
+        ? (loginData = { loggedIn: true })
+        : (loginData = { loggedIn: false });
   }
   return loginData;
 };
