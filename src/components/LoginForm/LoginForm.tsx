@@ -90,7 +90,7 @@ const LoginForm = (): JSX.Element => {
 
   const navigate = useNavigate();
   const goToSessionsPage = () => {
-    navigate("/sessions");
+    navigate("/calendar");
   };
 
   return (
