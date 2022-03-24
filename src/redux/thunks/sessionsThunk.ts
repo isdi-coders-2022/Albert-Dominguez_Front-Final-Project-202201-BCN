@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { AnyAction } from "redux";
 import { ThunkDispatch } from "redux-thunk";
 import { SessionShape } from "../../components/Session/Session";
@@ -19,8 +20,13 @@ export const loadSessionsListThunk = async (
       Authorization: `Bearer ${token}`,
     },
   });
-  const sessionsListResponse = await response.json();
-  dispatch(loadSessionsAction(sessionsListResponse));
+
+  if (response.ok) {
+    const sessionsListResponse = await response.json();
+    dispatch(loadSessionsAction(sessionsListResponse));
+  } else {
+    toast.warn("Failed to load sessions");
+  }
 };
 
 export const loadOneSessionThunk =

@@ -80,7 +80,7 @@ export const handlers = [
       ctx.status(200),
       ctx.json({
         token:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiMTIzNDU2IiwiaWQiOiI2MjM4YTYwYjhhZDM1OTdmODk2NTU0YTgiLCJpYXQiOjE2NDc4ODM2ODMsImV4cCI6MTY0ODIyOTI4M30.MX8-VT96Ig9Y1Xl_5zcGZsu49tXPs-GBTsgsQd0oYRQ",
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiMTIzNDU2IiwiaWQiOiI2MjM4YTYwYjhhZDM1OTdmODk2NTU0YTgiLCJpYXQiOjE2NDgwOTM3MTcsImV4cCI6MTY0ODQzOTMxN30.YWSt_AWC4yfanCvRB1pi95bCIkGbsx3NIHgWrbB507k",
       })
     )
   ),

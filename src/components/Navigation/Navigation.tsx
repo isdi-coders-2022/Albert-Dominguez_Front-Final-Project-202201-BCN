@@ -1,5 +1,9 @@
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+
 import styled from "styled-components";
+import { RootState } from "../../redux/store";
+import { logoutThunk } from "../../redux/thunks/usersThunk";
 
 const Header = styled.header`
   background-color: #f37370;
@@ -54,6 +58,8 @@ const TitleContainer = styled.div`
 `;
 
 const Navigation = (): JSX.Element => {
+  const user: any = useSelector((state: RootState) => state.loginData);
+  const dispatch = useDispatch();
   return (
     <Header>
       <TitleContainer>
@@ -67,32 +73,14 @@ const Navigation = (): JSX.Element => {
 
       <nav>
         <List>
-          <li>
-            {localStorage.userName ? (
-              <Links to="/calendar">Calendar</Links>
-            ) : (
-              ""
-            )}
-          </li>
+          <li>{user.loggedIn && <Links to="/calendar">Calendar</Links>}</li>
+
+          <li>{user.loggedIn && <Links to="/sessions">Sessions</Links>}</li>
+
+          <li>{user.loggedIn && <Links to={"/patients"}>Patients</Links>}</li>
 
           <li>
-            {localStorage.userName ? (
-              <Links to="/sessions">Sessions</Links>
-            ) : (
-              ""
-            )}
-          </li>
-
-          <li>
-            {localStorage.userName ? (
-              <Links to={"/patients"}>Patients</Links>
-            ) : (
-              ""
-            )}
-          </li>
-
-          <li>
-            {localStorage.userName ? (
+            {user.loggedIn ? (
               <Links to={"/newsession"}>Create Session</Links>
             ) : (
               <Links to={"/register"}>Register</Links>
@@ -100,8 +88,15 @@ const Navigation = (): JSX.Element => {
           </li>
 
           <li>
-            {localStorage.userName ? (
-              <Links onClick={() => localStorage.clear()} to={"/login"}>
+            {user.loggedIn ? (
+              <Links
+                onClick={async () => {
+                  localStorage.clear();
+                  user.loggedIn = false;
+                  await dispatch(logoutThunk());
+                }}
+                to={"/login"}
+              >
                 Log Out
               </Links>
             ) : (

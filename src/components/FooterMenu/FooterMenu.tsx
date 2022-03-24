@@ -1,7 +1,8 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { RootState } from "../../redux/store";
+import { logoutThunk } from "../../redux/thunks/usersThunk";
 
 type MenuProps = {
   isActive: any;
@@ -41,7 +42,7 @@ const List = styled.ul`
   li {
     margin: 0;
   }
-  @media (min-width: 400px) {
+  @media (min-width: 450px) {
     display: none;
   }
 `;
@@ -65,7 +66,8 @@ const Div = styled.div`
 `;
 
 const FooterMenu = ({ isActive, actionOnClick }: MenuProps) => {
-  const user: any = useSelector((state: RootState) => state.patient);
+  const user: any = useSelector((state: RootState) => state.loginData);
+  const dispatch = useDispatch();
   return (
     <Container
       onClick={actionOnClick}
@@ -76,24 +78,18 @@ const FooterMenu = ({ isActive, actionOnClick }: MenuProps) => {
       <List title="menuList">
         <li>
           <Div>
-            {user.loggedIn ? (
+            {user.loggedIn && (
               <Link to={"/calendar"} title="calendar">
                 Calendar
               </Link>
-            ) : (
-              <></>
             )}
           </Div>
         </li>
         <li>
-          <Div>
-            {user.loggedIn ? <Link to={"/sessions"}>Sessions</Link> : ""}
-          </Div>
+          <Div>{user.loggedIn && <Link to={"/sessions"}>Sessions</Link>}</Div>
         </li>
         <li>
-          <Div>
-            {user.loggedIn ? <Link to={"/patients"}>Patients</Link> : ""}
-          </Div>
+          <Div>{user.loggedIn && <Link to={"/patients"}>Patients</Link>}</Div>
         </li>
         <li>
           <Div>
@@ -109,7 +105,13 @@ const FooterMenu = ({ isActive, actionOnClick }: MenuProps) => {
         <li>
           <Div>
             {user.loggedIn ? (
-              <Link onClick={() => localStorage.clear()} to={"/login"}>
+              <Link
+                onClick={async () => {
+                  localStorage.clear();
+                  await dispatch(logoutThunk());
+                }}
+                to={"/login"}
+              >
                 Log Out
               </Link>
             ) : (

@@ -107,7 +107,7 @@ const RegisterForm = (): JSX.Element => {
         />
         <label htmlFor="lastname">Last Name: </label>
         <input
-          type={"lastname"}
+          type={"text"}
           id="lastname"
           value={formData.lastname}
           onChange={handleForm}

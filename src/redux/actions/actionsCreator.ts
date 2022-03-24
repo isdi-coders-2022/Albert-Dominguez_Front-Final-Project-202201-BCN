@@ -42,9 +42,9 @@ export const loginAction = (user: any) => ({
   user,
 });
 
-export const loginUserAction = (userInfo: any) => ({
+export const loginUserAction = (loginData: any) => ({
   type: actionTypes.login,
-  userInfo,
+  loginData,
 });
 
 export const logoutUserAction = () => ({
